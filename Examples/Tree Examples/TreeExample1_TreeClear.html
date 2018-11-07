@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html><head>
+<link rel="icon" type="image/png" href="http://www.cs.txstate.edu/%7Elk04/MyFavicon4.png">
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.8 [en] (Windows NT 5.0; U) [Netscape]">
+   <meta name="Author" content="Lee S. Koh"></head>
+<body>
+<img src="BannerLine1.gif">
+<hr><b><font size="+2">Tree Example 1: <tt>tree_clear</tt></font></b>
+<br>
+<hr><table cols="1" width="100%">
+<tbody><tr>
+<td><b><tt>tree_clear</tt></b>:</td>
+</tr>
+</tbody></table>
+
+<table style="width: 100%; height: 32px;">
+<tbody><tr>
+<td style="width: 2%; vertical-align: top;"></td>
+
+<td colspan="6" valign="top" width="98%">
+<table border="1" cellspacing="0" cols="1" width="100%">
+<tbody><tr>
+<td><b><tt>void tree_clear(btNode*&amp; root)</tt></b>
+<br><tt>// pre:&nbsp; (none)&nbsp;</tt>
+<br><tt>// post: dynamic memory of all the tree's nodes has been</tt>
+<br><tt>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; freed up (returned back
+to heap/freestore) and</tt>
+<br><tt>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; the tree is now empty (root
+pointer contains</tt>
+<br><tt>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; the null address)</tt>
+<br><b><tt>{</tt></b>
+<br><tt><b>&nbsp;&nbsp; if (root != 0)</b> // if empty tree simply return</tt>
+<br><tt>&nbsp;&nbsp; {</tt>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; tree_clear(root-&gt;left);</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; tree_clear(root-&gt;right);</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; delete root;</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; root = 0;</tt></b>
+<br><b><tt>&nbsp;&nbsp; }</tt></b>
+<br><b><tt>}</tt></b></td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+</tbody></table>
+
+<table style="width: 988px; height: 32px;" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"></td>
+
+<td colspan="6" valign="top" width="98%">NOTE: The base case (situation:
+empty tree; action: return) is implicit as commented.</td>
+</tr>
+</tbody></table>
+
+<hr>Use your browser's <b>Back</b> button to go back to previous page.
+(<a href="http://www.cs.txstate.edu/%7Elk04">click here to return to my homepage</a>)
+<br>
+<hr align="left">
+</body></html>

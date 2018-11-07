@@ -1,0 +1,1284 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html><head>
+<link rel="icon" type="image/png" href="http://www.cs.txstate.edu/%7Elk04/MyFavicon4.png">
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.8 [en] (Windows NT 5.0; U) [Netscape]">
+   <meta name="Author" content="Lee S. Koh"></head>
+<body>
+
+<hr><b><font size="+2">Programming Style Guide by Lee S. Koh</font></b>
+<br><font size="+1">(C/C++ Oriented)</font>
+<hr>
+<table cols="1" width="100%">
+<tbody><tr>
+<td valign="top">Regardless of the language that is used, <i>source code
+should be correct, readable, and understandable</i>. Of these three properties,
+correctness is obviously the most important. No matter which of the other
+qualities a piece of code has - is well structured, is well documented,
+looks nice, and so on - it is worthless if it does not produce correct
+and reliable results. Code testing is therefore an important step in software
+development.</td>
+</tr>
+</tbody></table>
+
+<table cols="1" width="100%">
+<tbody><tr>
+<td valign="top">It is often difficult for some students to appreciate the
+importance of the other two characteristics mentioned above and of developing
+good programming habits that lead to<b> </b>code that is readable and understandable.
+The difficulty often arises because programs developed in an academic environment
+are quite different from those developed in real-world situations, in which
+programming style and form assume greater importance. Student programs,
+subprograms, and libraries are usually quite small (perhaps less than a
+few hundred lines of code), are executed and modified only a few times
+(almost never, once they have been turned in), are rarely examined in detail
+by anyone other than the student and the instructor, and are not developed
+within the context of budget constraints. Real-world software, on the other
+hand, may be very large (perhaps several hundreds of thousands of lines
+of code), may be developed by teams of programmers, is commonly used for
+long periods of time and thus requires maintenance if it is to be kept
+current and correct, and often is maintained by someone<b> </b>other than
+the original programmer(s). As hardware costs continue to decrease and
+programming costs increase (a known trend that is disconcerting to the
+many that are negatively affected), the importance of reducing software
+maintenance cost and the corresponding importance of writing code that
+can be easily read and understood by others continues to increase. The
+following quote from a published programming style guide underlines the
+cost-saving significance of writing readable and understandable code: "A
+good rule of thumb is that 10% of the cost of a software project goes into
+writing code, while more than 50% is spent on maintaining the software.
+Think about the trade-offs between ease of programming now versus ease
+of maintenance for the next five to ten years when you consider the rules
+presented here."</td>
+</tr>
+</tbody></table>
+
+<table cols="1" width="100%">
+<tbody><tr>
+<td valign="top">General programming principles that contribute to the development
+of correct, readable and understandable code include (1) <i>programs and
+subprograms should be well structured</i>, (2) <i>all source code should
+be well documented</i>, and (3) <i>all source code should be formatted
+in a style that enhances readability</i>. To help you in cultivating good
+programming habits and following good programming practices, some specific
+guidelines are provided below.</td>
+</tr>
+</tbody></table>
+
+<table cols="1" width="100%">
+<tbody><tr>
+<td valign="top"></td>
+</tr>
+</tbody></table>
+
+<table cols="1" width="100%">
+<tbody><tr>
+<td valign="top"></td>
+</tr>
+</tbody></table>
+
+<table cols="1" width="100%">
+<tbody><tr>
+<td valign="top"></td>
+</tr>
+</tbody></table>
+
+<center><table border="1" cellspacing="0" cols="1" width="88%">
+<tbody><tr>
+<td valign="top" width="70%">
+<center><b><font color="#cc0000">Good list of BAD style/practice that you
+should avoid:</font></b> <a href="http://www.mindprod.com/jgloss/unmain.html">How
+To Write Unmaintainable Code</a></center>
+</td>
+</tr>
+</tbody></table></center>
+
+<table cols="1" width="100%">
+<tbody><tr>
+<td valign="top"></td>
+</tr>
+</tbody></table>
+
+<table cols="1" width="100%">
+<tbody><tr>
+<td valign="top"></td>
+</tr>
+</tbody></table>
+
+<table cols="1" width="100%">
+<tbody><tr>
+<td valign="top"></td>
+</tr>
+</tbody></table>
+
+<table cols="2" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"><img src="BulletL1_7x15.gif" height="15" width="7"></td>
+
+<td colspan="6" valign="top" width="98%"><i>Use a modular approach. </i>Rather
+than write one large subprogram or program, write individual subprograms
+that solve parts of the problem and that are relatively short and self-contained.</td>
+</tr>
+</tbody></table>
+
+<table cols="2" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"><img src="BulletL1_7x15.gif" height="15" width="7"></td>
+
+<td colspan="6" valign="top" width="98%"><i>Use the basic control structures
+when developing each code segment.</i> Studies have shown that any program
+unit can be written using only the sequential, selection, and repetition
+structures. These structures should be combined to form nested blocks of
+code that are entered only at the top and normally have only one exit.</td>
+</tr>
+</tbody></table>
+
+<table cols="3" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"><img src="BulletL2_5x12.gif" height="12" width="5"></td>
+
+<td colspan="5" valign="top" width="96%"><u>IN PARTICULAR</u>: <b><font color="#cc0000">The
+<font face="Courier New,Courier">goto</font>
+statement may <i>not</i> be used in the programs you write for this class
+unless you have sought my prior approval for its use - you will have to
+convince me that your particular situation warrants such use.</font></b></td>
+</tr>
+</tbody></table>
+
+<table cols="2" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"><img src="BulletL1_7x15.gif" height="15" width="7"></td>
+
+<td colspan="6" valign="top" width="98%"><i>Use local variables within subprograms.</i>
+Variables used only within a subprogram should be declared within that
+subprogram.</td>
+</tr>
+</tbody></table>
+
+<table cols="2" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"><img src="BulletL1_7x15.gif" height="15" width="7"></td>
+
+<td colspan="6" valign="top" width="98%"><i>Use parameters to pass information
+to and from subprograms.</i> Avoid using <b><i>global variables</i></b>
+to share information between subprograms because such use destroys their
+independence. It can be difficult to determine the value of a global variable
+at some point in the program because it may have been changed by any of
+the program units.</td>
+</tr>
+</tbody></table>
+
+<table cols="3" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"><img src="BulletL2_5x12.gif" height="12" width="5"></td>
+
+<td colspan="5" valign="top" width="96%"><u>IN PARTICULAR</u>: <b><font color="#cc0000">Global
+variables may
+<i>not</i> be used in the programs you write for this class
+unless you have sought my prior approval for their use - you will have
+to convince me that your particular situation warrants such use.</font></b></td>
+</tr>
+</tbody></table>
+
+<table cols="3" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"><img src="BulletL2_5x12.gif" height="12" width="5"></td>
+
+<td colspan="5" valign="top" width="96%"><u>NOTE</u>: Do not confuse <b><i>global
+variables</i></b> with <b><i>global constants</i></b> - the use of the
+latter is encouraged.</td>
+</tr>
+</tbody></table>
+
+<table cols="2" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"><img src="BulletL1_7x15.gif" height="15" width="7"></td>
+
+<td colspan="6" valign="top" width="98%"><i>To protect parameters that should
+not be modified by a subprogram, declare the corresponding parameters to
+be value parameters or </i><b><tt>const</tt></b><i> reference parameters
+rather than reference parameters. </i>Otherwise, the subprogram may unexpectedly
+change the value of a parameter in the originating (calling) program unit.
+This is a case of programming defensively. (This is often called the <i>principle
+of least privilege</i>.)</td>
+</tr>
+</tbody></table>
+
+<table cols="2" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"><img src="BulletL1_7x15.gif" height="15" width="7"></td>
+
+<td colspan="6" valign="top" width="98%"><i>Don't use </i>'<i>magic numbers</i>.'
+For example, the following statement violates what has been termed the
+"Houdini principle" because it allows numbers to arise suddenly without
+explanation, almost as if by magic:</td>
+</tr>
+</tbody></table>
+
+<table cols="3" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"></td>
+
+<td colspan="5" valign="top" width="96%"><b><tt>popChange = (0.1758 - 0.1257)
+* population;</tt></b></td>
+</tr>
+</tbody></table>
+
+<table cols="2" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"></td>
+
+<td colspan="6" valign="top" width="98%">The literals <b><tt>0.1758</tt></b>
+and <b><tt>0.1257</tt></b> should be replaced by constant identifiers (or
+variables whose values are read or assigned during execution), as in</td>
+</tr>
+</tbody></table>
+
+<table cols="3" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"></td>
+
+<td colspan="5" valign="top" width="96%"><b><tt>const double BIRTH_RATE =
+0.1758,</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+DEATH_RATE = 0.1257;</tt></b></td>
+</tr>
+</tbody></table>
+
+<table cols="3" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"></td>
+
+<td colspan="5" valign="top" width="96%"><b><tt>popChange = (BIRTHRATE -
+DEATH_RATE) * population;</tt></b></td>
+</tr>
+</tbody></table>
+
+<table cols="2" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"></td>
+
+<td colspan="6" valign="top" width="98%">The second assignment statement
+is more readable than the first. Also, if these numbers must be changed,
+one need only change the definitions of <b><font face="Courier New"><font size="-1">BIRTH_RATE</font></font></b>
+and <b><font face="Courier New"><font size="-1">DEATH_RATE</font></font></b>
+rather than conduct an exhaustive search of the program to locate all their
+occurrences.</td>
+</tr>
+</tbody></table>
+
+<table cols="3" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"><img src="BulletL2_5x12.gif" height="12" width="5"></td>
+
+<td colspan="5" valign="top" width="96%">Similarly, using a constant identifier
+such as <b><font face="Courier New"><font size="-1">INT_MAX</font></font></b>
+(defined in the <b><tt>climits</tt></b> library) rather than some machine-dependent
+constant such as <b><tt>32767</tt></b> will increase portability.</td>
+</tr>
+</tbody></table>
+
+<table cols="3" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"><img src="BulletL2_5x12.gif" height="12" width="5"></td>
+
+<td colspan="5" valign="top" width="96%">Another example is the use of <b><tt>EXIT_SUCCESS</tt></b>
+and <b><tt>EXIT_FAILURE</tt></b> (defined in the <b><tt>cstdlib</tt></b>
+library) rather than <b><tt>0</tt></b> and <b><tt>1</tt></b> as "status-of-execution"
+indicators.</td>
+</tr>
+</tbody></table>
+
+<table cols="2" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"><img src="BulletL1_7x15.gif" height="15" width="7"></td>
+
+<td colspan="6" valign="top" width="98%"><i>Strive for simplicity and clarity.
+</i>Clever
+programming tricks intended only to demonstrate the programmer's ingenuity
+or to produce code that executes only slightly more efficiently, at the
+expense of simplicity and clarity, should be avoided.</td>
+</tr>
+</tbody></table>
+
+<table cols="2" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"><img src="BulletL1_7x15.gif" height="15" width="7"></td>
+
+<td colspan="6" valign="top" width="98%"><i>Identify any preconditions and
+postconditions a subprogram has.</i></td>
+</tr>
+</tbody></table>
+
+<table cols="3" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"><img src="BulletL2_5x12.gif" height="12" width="5"></td>
+
+<td colspan="5" valign="top" width="96%">Preconditions describe what must
+be true before the subprogram is executed. Typically, these are assumptions
+made about the subprogram, often one or more restrictions on what comprises
+a valid input or received value.</td>
+</tr>
+</tbody></table>
+
+<table cols="3" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"><img src="BulletL2_5x12.gif" height="12" width="5"></td>
+
+<td colspan="5" valign="top" width="96%">Postconditions, on the other hand,
+describe what will be true after the subprogram is executed.</td>
+</tr>
+</tbody></table>
+
+<table cols="2" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"><img src="BulletL1_7x15.gif" height="15" width="7"></td>
+
+<td colspan="6" valign="top" width="98%"><i>Have all applicable preconditions
+checked for conformance (unless such checking is not possible) first and
+foremost when implementing a subprogram.</i></td>
+</tr>
+</tbody></table>
+
+<table cols="3" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"><img src="BulletL2_5x12.gif" height="12" width="5"></td>
+
+<td colspan="5" valign="top" width="96%">If a violation of any precondition
+is detected, the violation should be handled in some acceptable way.</td>
+</tr>
+</tbody></table>
+
+<table cols="4" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"><img src="BulletL3_5x12.gif" height="12" width="5"></td>
+
+<td colspan="4" valign="top" width="94%"><u>NOTE 1</u>: For simplicity in
+this class, handle any violations of preconditions by first displaying
+an informative error message and then terminating the program.</td>
+</tr>
+</tbody></table>
+
+<table cols="5" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"><img src="BulletL4_5x12.gif" height="12" width="5"></td>
+
+<td colspan="3" valign="top" width="92%">The <b><font face="Courier New,Courier"><font size="-1">assert()</font></font></b>
+function (provided by the <b><font face="Courier New,Courier"><font size="-1">cassert</font></font></b>
+library), which evaluates a Boolean expression and terminates execution
+if the expression evaluates to false, can be used as a simple (and crude)
+way for checking and handling violations of preconditions.</td>
+</tr>
+</tbody></table>
+
+<table cols="6" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"><img src="BulletL5_6x12.gif" height="12" width="6"></td>
+
+<td colspan="2" valign="top" width="90%">For example, the following statement
+uses <b><tt>assert()</tt></b> to check and handle the preconditions that
+<b><tt>score</tt></b>
+(an integer) should be greater than or equal to <b><tt>MIN_SCORE</tt></b>
+and less than or equal to <b><tt>MAX_SCORE</tt></b> for any further processing
+to be relevant:</td>
+</tr>
+</tbody></table>
+
+<table cols="7" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="88%"><b><tt>assert(score &gt;= MIN_SCORE);<br></tt></b><b><tt>assert(score &lt;= MAX_SCORE);</tt></b></td>
+</tr>
+</tbody></table>
+
+<table cols="6" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"></td>
+
+<td colspan="2" valign="top" width="90%">If the expression <b><tt>(score
+&gt;= MIN_SCORE) &amp;&amp; (score &lt;= MAX_SCORE)</tt></b> evaluates to
+false, <b><tt>assert()</tt></b> will display a standard "assertion failed"
+message (which varies somewhat from compiler to compiler).&nbsp;</td>
+</tr>
+</tbody></table>
+
+<table cols="5" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"><img src="BulletL4_5x12.gif" height="12" width="5"></td>
+
+<td colspan="3" valign="top" width="92%">By using a simple <b><tt>if</tt></b>
+statement and the <b><tt>exit()</tt></b> function provided by the <b><tt>cstdlib</tt></b>
+library, the same effect (and a customized "violation detected" message)
+can be obtained as illustrated below:</td>
+</tr>
+</tbody></table>
+
+<table cols="6" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"></td>
+
+<td colspan="2" valign="top" width="90%"><b><tt>if ( (score &lt; MIN_SCORE)
+|| (score &gt; MAX_SCORE) )</tt></b>
+<br><b><tt>{</tt></b>
+<br><b><tt>&nbsp;&nbsp; cerr &lt;&lt; "Invalid test score " &lt;&lt; score
+&lt;&lt; " encountered." &lt;&lt; endl;&nbsp;</tt></b>
+<br><b><tt>&nbsp;&nbsp; cerr &lt;&lt; "A valid test score must be in the
+range [" &lt;&lt; MIN_SCORE</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;&lt; ", " &lt;&lt;
+MAX_SCORE &lt;&lt; "]." &lt;&lt; endl;</tt></b>
+<br><b><tt>&nbsp;&nbsp; cerr &lt;&lt; "Program will be terminated." &lt;&lt;
+endl;</tt></b>
+<br><b><tt>&nbsp;&nbsp; exit(EXIT_FAILURE);</tt></b>
+<br><b><tt>}</tt></b></td>
+</tr>
+</tbody></table>
+
+<table cols="4" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"><img src="BulletL3_5x12.gif" height="12" width="5"></td>
+
+<td colspan="4" valign="top" width="94%"><u>NOTE 2</u>: To avoid cluttering
+and detracting from our focus on key concepts, we will not be using the
+<i>exception
+handling</i> facility of C++ in this class.</td>
+</tr>
+</tbody></table>
+
+<table cols="3" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"><img src="BulletL2_5x12.gif" height="12" width="5"></td>
+
+<td colspan="5" valign="top" width="96%">Checking preconditions is another
+case of programming defensively.</td>
+</tr>
+</tbody></table>
+
+<table cols="2" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"><img src="BulletL1_7x15.gif" height="15" width="7"></td>
+
+<td colspan="6" valign="top" width="98%">For understandability (by others), include the following for&nbsp;programs or subprograms (functions) that are<span style="font-style: italic;"> of one's own origin</span>:</td>
+</tr>
+</tbody></table><table cols="3" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"><img src="BulletL2_5x12.gif" height="12" width="5"></td>
+
+<td colspan="5" valign="top" width="96%"><i>Each program should include opening
+documentation</i>. Comments should be included at the beginning of the
+program to explain what it does, how it works, any special algorithms it
+implements, and so on, and may also include a summary of the problem's
+specification, assumptions, and other items of information such as the
+name of the file, the name of the programmer, the date the program was
+written, when it was last modified, and references to books and manuals
+that give additional information<b> </b>about the program.</td>
+</tr>
+</tbody></table><table cols="3" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"><img src="BulletL2_5x12.gif" height="12" width="5"></td>
+
+<td colspan="5" valign="top" width="96%"><b><tt></tt></b><i>Each subprogram should include
+leading documentation.</i> Comments should be included at the beginning
+of a subprogram to describe what it does (<i>i.e.</i>, its purpose or intent),
+what (if anything) it receives,<b> </b>what (if anything) it returns, any
+input<b> </b>or output, and applicable preconditions and postconditions.</td>
+</tr>
+</tbody></table><table cols="2" width="100%"><tbody><tr><td valign="top" width="2%"><img src="BulletL1_7x15.gif" height="15" width="7"></td>
+
+<td colspan="6" valign="top" width="98%"><i>Comments should be used to explain
+key code segments and/or segments whose purpose or design is not obvious.</i>
+However, don't clutter the code with needless comments, as in</td>
+</tr>
+</tbody></table>
+
+<table cols="3" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"></td>
+
+<td colspan="5" valign="top" width="96%"><b><tt>++counter; // add 1 to counter</tt></b></td>
+</tr>
+</tbody></table>
+
+<table cols="2" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"><img src="BulletL1_7x15.gif" height="15" width="7"></td>
+
+<td colspan="6" valign="top" width="98%"><i>Use meaningful identifiers.</i>
+For example,</td>
+</tr>
+</tbody></table>
+
+<table cols="3" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"></td>
+
+<td colspan="5" valign="top" width="96%"><b><tt>wages = hoursWorked * hourlyRate;</tt></b></td>
+</tr>
+</tbody></table>
+
+<table cols="2" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"></td>
+
+<td colspan="6" valign="top" width="98%">is clearer than</td>
+</tr>
+</tbody></table>
+
+<table cols="3" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"></td>
+
+<td colspan="5" valign="top" width="96%"><b><tt>w = h * r;</tt></b></td>
+</tr>
+</tbody></table>
+
+<table cols="2" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"></td>
+
+<td colspan="6" valign="top" width="98%">or</td>
+</tr>
+</tbody></table>
+
+<table cols="3" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"></td>
+
+<td colspan="5" valign="top" width="96%"><b><tt>z7 = alpha * x;</tt></b></td>
+</tr>
+</tbody></table>
+
+<table cols="2" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"><img src="BulletL1_7x15.gif" height="15" width="7"></td>
+
+<td colspan="6" valign="top" width="98%">Don't use "skimpy" abbreviations
+just to save a few keystrokes when entering the source code. Also, follow
+what has been called the "Shirley Temple principle" and avoid "cute" identifiers,
+as in</td>
+</tr>
+</tbody></table>
+
+<table cols="3" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"></td>
+
+<td colspan="5" valign="top" width="96%"><b><tt>bacon_brought_home = hoursWasted
+* pittance;</tt></b></td>
+</tr>
+</tbody></table>
+
+<table cols="2" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"><img src="BulletL1_7x15.gif" height="15" width="7"></td>
+
+<td colspan="6" valign="top" width="98%"><i>In general, use proper indentation,
+alignment and spacing to maximize readability.</i> It is difficult to list
+all possible situations but the few specific examples given in this guide
+should give you a good idea.</td>
+</tr>
+</tbody></table>
+
+<table cols="3" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"><img src="BulletL2_5x12.gif" height="12" width="5"></td>
+
+<td colspan="5" valign="top" width="96%"><u>NOTE 1</u>: Use of <i>three spaces
+per indentation level</i> is to me a good compromise between providing
+good indentation effect and not wasting too much coding space.</td>
+</tr>
+</tbody></table>
+
+<table cols="3" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"><img src="BulletL2_5x12.gif" height="12" width="5"></td>
+
+<td colspan="5" valign="top" width="96%"><u>NOTE 2</u>: <i>Avoid using the
+<b>tab
+</b>key</i>
+for indentation, otherwise your source code may look unexpectedly and disastrously
+different when printed or viewed on a different platform because there
+is no standardized way of how a <b><i>tab</i></b> should be handled.</td>
+</tr>
+</tbody></table>
+
+<table cols="4" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"><img src="BulletL3_5x12.gif" height="12" width="5"></td>
+
+<td colspan="4" valign="top" width="94%">If you see me using the <b><i>tab</i></b>
+key that's because I have customized it to represent three spaces (say)
+in an editor that allows such customization.</td>
+</tr>
+</tbody></table>
+
+<table cols="3" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"><img src="BulletL2_5x12.gif" height="12" width="5"></td>
+
+<td colspan="5" valign="top" width="96%"><u>NOTE 3</u>: Limit each line of
+code to <i>no more than about 70 characters
+</i>long (counting any indenting
+spaces and trailing comments) so that it will not wrap around (or be truncated
+or require scrolling) when printed or viewed.</td>
+</tr>
+</tbody></table>
+
+<table cols="4" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"><img src="BulletL3_5x12.gif" height="12" width="5"></td>
+
+<td colspan="4" valign="top" width="94%">Line wraps will most certainly cause
+your code to be very unreadable and negatively affect its grading.</td>
+</tr>
+</tbody></table>
+
+<table cols="2" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"><img src="BulletL1_7x15.gif" height="15" width="7"></td>
+
+<td colspan="6" valign="top" width="98%"><i>Put each statement of the program
+on a separate line.</i></td>
+</tr>
+</tbody></table>
+
+<table cols="2" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"><img src="BulletL1_7x15.gif" height="15" width="7"></td>
+
+<td colspan="6" valign="top" width="98%">Indent <b><tt>if</tt></b>, <b><tt>for</tt></b>,
+<b><tt>while</tt></b>
+and
+<b><tt>do-while</tt></b> as shown below:</td>
+</tr>
+</tbody></table>
+
+<table cols="3" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"><img src="BulletL2_5x12.gif" height="12" width="5"></td>
+
+<td colspan="5" valign="top" width="96%"><b><tt><font color="#990000">if
+(temperature &gt; 98.6)</font></tt></b>
+<br><b><tt><font color="#990000">&nbsp;&nbsp; cout &lt;&lt; "You have a
+fever!\n";</font></tt></b>
+<br><b><tt><font color="#990000">else</font></tt></b>
+<br><b><tt><font color="#990000">&nbsp;&nbsp; cout &lt;&lt; "You don't
+have a fever.\n";</font></tt></b></td>
+</tr>
+</tbody></table>
+
+<table cols="3" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"><img src="BulletL2_5x12.gif" height="12" width="5"></td>
+
+<td colspan="5" valign="top" width="96%"><b><tt><font color="#3333ff">if
+(temperature &gt; 98.6)</font></tt></b>
+<br><b><tt><font color="#3333ff">{</font></tt></b>
+<br><b><tt><font color="#3333ff">&nbsp;&nbsp; cout &lt;&lt; "You have a
+fever!\n";</font></tt></b>
+<br><b><tt><font color="#3333ff">&nbsp;&nbsp; cout &lt;&lt; "Drink lots
+of fluids and go to bed!\n";</font></tt></b>
+<br><b><tt><font color="#3333ff">}</font></tt></b>
+<br><b><tt><font color="#3333ff">else</font></tt></b>
+<br><b><tt><font color="#3333ff">{</font></tt></b>
+<br><b><tt><font color="#3333ff">&nbsp;&nbsp; cout &lt;&lt; "You don't
+have a fever.\n";</font></tt></b>
+<br><b><tt><font color="#3333ff">&nbsp;&nbsp; cout &lt;&lt; "Do your homework.\n";</font></tt></b>
+<br><b><tt><font color="#3333ff">}</font></tt></b></td>
+</tr>
+</tbody></table>
+
+<table cols="3" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"><img src="BulletL2_5x12.gif" height="12" width="5"></td>
+
+<td colspan="5" valign="top" width="96%"><b><tt><font color="#990000">for
+(i = 1; i &lt;= n; i++)</font></tt></b>
+<br><b><tt><font color="#990000">&nbsp;&nbsp; s = s + i;</font></tt></b></td>
+</tr>
+</tbody></table>
+
+<table cols="3" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"><img src="BulletL2_5x12.gif" height="12" width="5"></td>
+
+<td colspan="5" valign="top" width="96%"><b><tt><font color="#3333ff">for
+(i = 1; i &lt;= n; i++)</font></tt></b>
+<br><b><tt><font color="#3333ff">{</font></tt></b>
+<br><b><tt><font color="#3333ff">&nbsp;&nbsp; s = s + i;</font></tt></b>
+<br><b><tt><font color="#3333ff">&nbsp;&nbsp; cout &lt;&lt; "Don't panic!\n";</font></tt></b>
+<br><b><tt><font color="#3333ff">}</font></tt></b></td>
+</tr>
+</tbody></table>
+
+<table cols="3" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"><img src="BulletL2_5x12.gif" height="12" width="5"></td>
+
+<td colspan="5" valign="top" width="96%"><b><tt><font color="#990000">while
+(i &gt; 0)</font></tt></b>
+<br><b><tt><font color="#990000">&nbsp;&nbsp; cout &lt;&lt; --i &lt;&lt;
+endl;</font></tt></b></td>
+</tr>
+</tbody></table>
+
+<table cols="3" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"><img src="BulletL2_5x12.gif" height="12" width="5"></td>
+
+<td colspan="5" valign="top" width="96%"><b><tt><font color="#3333ff">while
+(i &gt; 0)</font></tt></b>
+<br><b><tt><font color="#3333ff">{</font></tt></b>
+<br><b><tt><font color="#3333ff">&nbsp;&nbsp; i = i - 1;</font></tt></b>
+<br><b><tt><font color="#3333ff">&nbsp;&nbsp; cout &lt;&lt; i &lt;&lt;
+endl;</font></tt></b>
+<br><b><tt><font color="#3333ff">}</font></tt></b></td>
+</tr>
+</tbody></table>
+
+<table cols="3" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"><img src="BulletL2_5x12.gif" height="12" width="5"></td>
+
+<td colspan="5" valign="top" width="96%"><b><tt><font color="#990000">do</font></tt></b>
+<br><b><tt><font color="#990000">{</font></tt></b>
+<br><b><tt><font color="#990000">&nbsp;&nbsp; cout &lt;&lt; --i &lt;&lt;
+endl;</font></tt></b>
+<br><b><tt><font color="#990000">}</font></tt></b>
+<br><b><tt><font color="#990000">while (i &gt; 0);</font></tt></b></td>
+</tr>
+</tbody></table>
+
+<table cols="3" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"><img src="BulletL2_5x12.gif" height="12" width="5"></td>
+
+<td colspan="5" valign="top" width="96%"><b><tt><font color="#3333ff">do</font></tt></b>
+<br><b><tt><font color="#3333ff">{</font></tt></b>
+<br><b><tt><font color="#3333ff">&nbsp;&nbsp; i = i - 1;</font></tt></b>
+<br><b><tt><font color="#3333ff">&nbsp;&nbsp; cout &lt;&lt; i &lt;&lt;
+endl;</font></tt></b>
+<br><b><tt><font color="#3333ff">}</font></tt></b>
+<br><b><tt><font color="#3333ff">while (i &gt; 0);</font></tt></b></td>
+</tr>
+</tbody></table>
+
+<table cols="2" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"><img src="BulletL1_7x15.gif" height="15" width="7"></td>
+
+<td colspan="6" valign="top" width="98%"><i>Use uppercase and lowercase letters
+in a way that contributes to program's readability</i>.</td>
+</tr>
+</tbody></table>
+
+<table cols="3" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"><img src="BulletL2_5x12.gif" height="12" width="5"></td>
+
+<td colspan="5" valign="top" width="96%"><u>IN PARTICULAR 1</u>: Put identifiers
+that are <i>variables</i> in lowercase<b>,
+</b>capitalizing the first letter
+of each word <i>after the first</i> as in <b><font face="Courier New"><font size="-1">totalHoursWorked</font></font></b>
+(this is called the <b><font face="Courier New"><font size="-1">camelBack</font></font></b>
+style).</td>
+</tr>
+</tbody></table>
+
+<table cols="4" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"><img src="BulletL3_5x12.gif" height="12" width="5"></td>
+
+<td colspan="4" valign="top" width="94%">For a multi-word variable, it is
+also acceptable to have every word in lowercase and separate the words
+with underscores, as in <b><font face="Courier New"><font size="-1">total_hours_worked</font></font></b>.</td>
+</tr>
+</tbody></table>
+
+<table cols="3" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"><img src="BulletL2_5x12.gif" height="12" width="5"></td>
+
+<td colspan="5" valign="top" width="96%"><u>IN PARTICULAR 2</u>: Put identifiers
+that are <i>constants</i> in all uppercase, as in <b><font face="Courier New"><font size="-1">PI</font></font></b>.</td>
+</tr>
+</tbody></table>
+
+<table cols="4" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"><img src="BulletL3_5x12.gif" height="12" width="5"></td>
+
+<td colspan="4" valign="top" width="94%">For a multi-word constant, separate
+the words with underscores, as in <b><tt>LOW_CUTOFF_SCORE</tt></b>.</td>
+</tr>
+</tbody></table>
+
+<table cols="3" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"><img src="BulletL2_5x12.gif" height="12" width="5"></td>
+
+<td colspan="5" valign="top" width="96%"><u>IN PARTICULAR 3</u>: Put identifiers
+that are <i>functions</i> in lowercase, but capitalizing the first letter
+of each word <u>or</u> for each word <i>after the first</i> as in <b><font face="Courier New"><font size="-1">DisplayInfo()</font></font></b> <u>or</u>&nbsp;<u></u><b><font face="Courier New"><font size="-1">displayInfo()</font></font></b>.</td>
+</tr>
+</tbody></table>
+
+<table cols="4" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"><img src="BulletL3_5x12.gif" height="12" width="5"></td>
+
+<td colspan="4" valign="top" width="94%">Although not popular, but to have
+every word in a multi-word function name in lowercase and separate the
+words with underscores, as in <b><font face="Courier New"><font size="-1">display_info()</font></font></b>,
+is also acceptable.</td>
+</tr>
+</tbody></table>
+
+<table cols="3" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"><img src="BulletL2_5x12.gif" height="12" width="5"></td>
+
+<td colspan="5" valign="top" width="96%"><u>IN PARTICULAR 4</u>: Put identifiers
+that are <i>programmer-defined types</i> in lowercase, but capitalizing
+the first letter of each word as in <b><tt>BigInt</tt></b>.</td>
+</tr>
+</tbody></table>
+
+<table cols="2" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"><img src="BulletL1_7x15.gif" height="15" width="7"></td>
+
+<td colspan="6" valign="top" width="98%"><i>Put each </i><b><font face="Courier New">{</font></b><i>
+and </i><b><font face="Courier New">}</font></b><i> on separate lines</i>.</td>
+</tr>
+</tbody></table>
+
+<table cols="2" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"><img src="BulletL1_7x15.gif" height="15" width="7"></td>
+
+<td colspan="6" valign="top" width="98%"><i>Align each </i><b><font face="Courier New">{</font></b><i>
+and its corresponding
+</i><b><font face="Courier New">}</font></b>.
+<i>Indent
+the<b> </b>statements enclosed by </i><b><font face="Courier New">{</font></b><i>
+and </i><b><font face="Courier New">}</font></b>.</td>
+</tr>
+</tbody></table>
+
+<table cols="2" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"><img src="BulletL1_7x15.gif" height="15" width="7"></td>
+
+<td colspan="6" valign="top" width="98%"><i>When a statement is continued
+from one line to another, indent the continued line(s)</i>.</td>
+</tr>
+</tbody></table>
+
+<table cols="2" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"><img src="BulletL1_7x15.gif" height="15" width="7"></td>
+
+<td colspan="6" valign="top" width="98%"><i>Align the identifiers in each
+constant and variable declaration, placing each on a separate line</i>.
+Three examples follow:</td>
+</tr>
+</tbody></table>
+
+<table cols="3" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"><img src="BulletL2_5x12.gif" height="12" width="5"></td>
+
+<td colspan="5" valign="top" width="96%"><b><tt>const double TAX_RATE = 0.1963,</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+INTEREST_RATE = 0.185;</tt></b></td>
+</tr>
+</tbody></table>
+
+<table cols="3" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"><img src="BulletL2_5x12.gif" height="12" width="5"></td>
+
+<td colspan="5" valign="top" width="96%"><b><tt><font color="#990000">int
+employeeNumber;</font></tt></b></td>
+</tr>
+</tbody></table>
+
+<table cols="3" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"><img src="BulletL2_5x12.gif" height="12" width="5"></td>
+
+<td colspan="5" valign="top" width="96%"><b><tt><font color="#3333ff">double
+hours,</font></tt></b>
+<br><b><tt><font color="#3333ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; rate,</font></tt></b>
+<br><b><tt><font color="#3333ff">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; wages;</font></tt></b></td>
+</tr>
+</tbody></table>
+
+<table cols="2" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"><img src="BulletL1_7x15.gif" height="15" width="7"></td>
+
+<td colspan="6" valign="top" width="98%"><i>Use blank lines to separate logical
+sections of code within a program unit (function) and to separate different
+program units (functions) contained within the same file - </i>this will
+improve readability because it helps reveal the intended logical and organizational
+separation to the reader<i>.</i></td>
+</tr>
+</tbody></table>
+
+<table cols="3" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"><img src="BulletL2_5x12.gif" height="12" width="5"></td>
+
+<td colspan="5" valign="top" width="96%">For instance, blank lines should
+be used to separate into groups the following types of statements: declarations,
+input, different kinds of processing, and output.</td>
+</tr>
+</tbody></table>
+
+<table cols="3" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"><img src="BulletL2_5x12.gif" height="12" width="5"></td>
+
+<td colspan="5" valign="top" width="96%">Don't go overboard in using blank
+lines, however<i> -</i> a good rule of thumb is to use only <i>one blank
+line</i> to separate <i>two logical sections of code within a program unit</i>
+(function), and use
+<i>more blank lines</i> (perhaps <i>three</i>) to separate
+<i>two
+program units (functions) contained within the same file</i>.</td>
+</tr>
+</tbody></table>
+
+<table cols="4" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"><img src="BulletL3_5x12.gif" height="12" width="5"></td>
+
+<td colspan="4" valign="top" width="94%">Overuse of blank lines (such as
+using more than one blank line to separate two logical sections of code
+within a program unit) does not give any additional beneficial effect but
+instead wastes space and reduces the compactness of the code.</td>
+</tr>
+</tbody></table>
+
+<table cols="2" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"><img src="BulletL1_7x15.gif" height="15" width="7"></td>
+
+<td colspan="6" valign="top" width="98%"><i>Separate the operators and operands
+in an expression with spaces to make the expression easy to read.</i> For
+example,</td>
+</tr>
+</tbody></table>
+
+<table cols="3" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"></td>
+
+<td colspan="5" valign="top" width="96%"><b><tt>mass = volume * density;</tt></b></td>
+</tr>
+</tbody></table>
+
+<table cols="2" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"></td>
+
+<td colspan="6" valign="top" width="98%">and not</td>
+</tr>
+</tbody></table>
+
+<table cols="3" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"></td>
+
+<td colspan="5" valign="top" width="96%"><b><tt>mass=volume*density;</tt></b></td>
+</tr>
+</tbody></table>
+
+<table cols="2" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"><img src="BulletL1_7x15.gif" height="15" width="7"></td>
+
+<td colspan="6" valign="top" width="98%"><i>Avoid inserting space(s) between
+an array name and its index</i>. For example,</td>
+</tr>
+</tbody></table>
+
+<table cols="3" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"></td>
+
+<td colspan="5" valign="top" width="96%"><b><tt>cout &lt;&lt; score[i] &lt;&lt;
+endl;</tt></b></td>
+</tr>
+</tbody></table>
+
+<table cols="2" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"></td>
+
+<td colspan="6" valign="top" width="98%">is more readable and preferred compared
+to</td>
+</tr>
+</tbody></table>
+
+<table cols="3" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"></td>
+
+<td colspan="5" valign="top" width="96%"><b><tt>cout &lt;&lt; score [i] &lt;&lt;
+endl;</tt></b></td>
+</tr>
+</tbody></table>
+
+<table cols="2" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"></td>
+
+<td colspan="6" valign="top" width="98%">or</td>
+</tr>
+</tbody></table>
+
+<table cols="3" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"></td>
+
+<td colspan="5" valign="top" width="96%"><b><tt>cout &lt;&lt; score [ i ]
+&lt;&lt; endl;</tt></b></td>
+</tr>
+</tbody></table>
+
+<table cols="2" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"><img src="BulletL1_7x15.gif" height="15" width="7"></td>
+
+<td colspan="6" valign="top" width="98%"><i>Declare constants at the beginning
+of a function. Declare variables near their first use. </i>This makes it
+easy to find constants when they must be modified. It also reduces the
+tendency to declare unused variables, since declarations are deferred until
+they are needed.</td>
+</tr>
+</tbody></table>
+
+<table cols="2" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"><img src="BulletL1_7x15.gif" height="15" width="7"></td>
+
+<td colspan="6" valign="top" width="98%"><i>Label all output produced by
+a program</i>. For example,</td>
+</tr>
+</tbody></table>
+
+<table cols="3" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"></td>
+
+<td colspan="5" valign="top" width="96%"><b><tt>cout &lt;&lt; "Employee #
+" &lt;&lt; employeeNumber</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp; &lt;&lt; " Wages = $" &lt;&lt; employeeWages;</tt></b></td>
+</tr>
+</tbody></table>
+
+<table cols="2" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"></td>
+
+<td colspan="6" valign="top" width="98%">produces more informative output
+than</td>
+</tr>
+</tbody></table>
+
+<table cols="3" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"></td>
+
+<td colspan="5" valign="top" width="96%"><b><tt>cout &lt;&lt; employeeNumber
+&lt;&lt; ' ' &lt;&lt; employeeWages;</tt></b></td>
+</tr>
+</tbody></table>
+
+<table cols="2" width="100%">
+<tbody><tr>
+<td valign="top" width="2%"><img src="BulletL1_7x15.gif" height="15" width="7"></td>
+
+<td colspan="6" valign="top" width="98%"><i>Last but not least, be consistent
+with the style you use</i>. Inconsistencies invite confusion!</td>
+</tr>
+</tbody></table>
+
+<hr>Use your browser's <b>Back</b> button to go back to previous page.
+(<a href="http://www.cs.txstate.edu/%7Elk04">click here to return to my homepage</a>)
+<br>
+<hr>
+</body></html>

@@ -1,0 +1,126 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link rel="icon"
+      type="image/png"
+      href="http://www.cs.txstate.edu/~lk04/MyFavicon4.png">
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.8 [en] (Windows NT 5.0; U) [Netscape]">
+   <meta name="Author" content="Lee S. Koh">
+</head>
+<body>
+<img SRC="BannerLine1.gif" >
+<br>
+<hr style="COLOR: blue"><font size=+2>Breadth-First (Level) Traversal of
+a Linked List of Linked Lists</font>
+<br><font size=+2>(Algorithm in Pseudocode)</font>
+<br>
+<hr SIZE=1 WIDTH="100%">
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP COLSPAN="6" WIDTH="39%"><b><font size=+1>Node Structures</font></b>
+<br>
+<hr SIZE=1 WIDTH="100%"></td>
+
+<td WIDTH="59%"><b><font size=+1>Example</font></b>
+<hr SIZE=1 WIDTH="100%"></td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP COLSPAN="6" WIDTH="39%"><tt>// parent</tt>
+<br><tt>struct PNode</tt>
+<br><tt>{</tt>
+<br><tt>&nbsp;&nbsp; CNode* data;</tt>
+<br><tt>&nbsp;&nbsp; PNode* link;</tt>
+<br><tt>};</tt>
+<p><tt>// child</tt>
+<br><tt>struct CNode</tt>
+<br><tt>{</tt>
+<br><tt>&nbsp;&nbsp; int data;</tt>
+<br><tt>&nbsp;&nbsp; CNode* link;</tt>
+<br><tt>};</tt>
+<br>
+<hr SIZE=1 WIDTH="100%"><font size=+1><b>Pseudocode </b>(Print Value at
+Each Node):</font>
+<p><tt>if (head == 0) return</tt>
+<br><tt>create queue q of <b>CNode*</b></tt>
+<br><tt>while (head != 0)</tt>
+<br><tt>&nbsp;&nbsp; if (head->data != 0)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; q.push(head->data)</tt>
+<br><tt>&nbsp;&nbsp; head = head->link;</tt>
+<br><tt>while ( ! q.empty() )</tt>
+<br><tt>&nbsp;&nbsp; cursor = q.front()</tt>
+<br><tt>&nbsp;&nbsp; q.pop()</tt>
+<br><tt>&nbsp;&nbsp; display cursor->data</tt>
+<br><tt>&nbsp;&nbsp; if ( cursor->link != 0 )</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; q.push( cursor->link )</tt></td>
+
+<td WIDTH="59%"><img SRC="LLofLL.gif" height=504 width=584></td>
+</tr>
+</table>
+
+<hr>
+<table COLS=1 WIDTH="100%" >
+<tr>
+<td><b>Why queue? (What's FIFO about the problem?)</b></td>
+</tr>
+</table>
+
+<table COLS=1 WIDTH="100%" >
+<tr>
+<td>For each level, the child-list nodes involved must be processed in
+the order in which the respective child lists are encountered in the parent
+list, <i>i.e.</i>, <i>first</i> encountered
+<i>first</i> to be processed.</td>
+</tr>
+</table>
+
+<table COLS=1 WIDTH="100%" >
+<tr>
+<td>Additional clarifications:</td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"><img SRC="BulletL1_7x15.gif" height=15 width=7></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%"><i>Initial buffering</i> of the
+child-list head pointers as they are encountered (while traversing the
+parent list from beginning to end) in a <i>queue</i> ensures the prescibed
+processing order for the child-list nodes of the <i>first level</i>.</td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"><img SRC="BulletL1_7x15.gif" height=15 width=7></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%"><i>Subsequent buffering</i> (in
+the same queue) of the child-list head pointers as they are encountered
+(while processing the nodes pointed to by the head pointers previously
+buffered) ensures the prescibed processing order for the child-list nodes
+of the <i>remaining levels</i>.</td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"></td>
+
+<td VALIGN=TOP WIDTH="2%"><img SRC="BulletL2_5x12.gif" height=12 width=5></td>
+
+<td VALIGN=TOP COLSPAN="5" WIDTH="96%">Note that the pointer in the link
+field of node <i>n</i> in an <i>N</i>-node linked list is effectively a
+head pointer, namely the head pointer of the <i>smaller list</i> consisting
+of node <i>n+1</i>, node <i>n+2</i>, <tt>...</tt> and node <i>N</i>. (This
+applies also for the case of node <i>N</i>, the <i>null pointer</i> in
+whose link field is the head pointer of the <i>empty list</i>.)</td>
+</tr>
+</table>
+
+<hr align="left" style="COLOR: blue">
+</body>
+</html>

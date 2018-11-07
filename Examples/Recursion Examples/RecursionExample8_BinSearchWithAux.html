@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html><head>
+<link rel="icon" type="image/png" href="http://www.cs.txstate.edu/%7Elk04/MyFavicon4.png">
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.8 [en] (Windows NT 5.0; U) [Netscape]">
+   <meta name="Author" content="Lee S. Koh"></head>
+<body>
+<img src="BannerLine1.gif">
+<hr><font size="+2"><b>Recursion Example 8: </b><i>Binary Search, Indirect
+Recursion</i></font>
+<center>
+<hr></center>
+
+<table border="1" cellspacing="0" cols="1" width="100%">
+<tbody><tr>
+<td valign="top"><b><tt>int BinSearch(const int a[], int n, int key)</tt></b>
+<br><tt>// returns index of matched item or -1 if no match</tt>
+<br><b><tt>{</tt></b>
+<br><b><tt>&nbsp;&nbsp; if (n &lt; 1) return -1;</tt></b>
+<br><b><tt>&nbsp;&nbsp; return BinSearchAux(a, 0, n - 1, key);</tt></b>
+<br><b><tt>}</tt></b>
+<p><b><tt>int BinSearchAux(const int a[], int lo, int hi, int key)</tt></b>
+<br><tt>// n &gt;= 1</tt>
+<br><b><tt>{</tt></b>
+<br><b><tt>&nbsp;&nbsp; if (lo &gt; hi) return -1;</tt></b>
+<br><b><tt>&nbsp;&nbsp; int mid = (lo + hi) / 2;</tt></b>
+<br><b><tt>&nbsp;&nbsp; if ( key == a[mid] )&nbsp;</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return mid;</tt></b>
+<br><b><tt>&nbsp;&nbsp; else if ( key &gt; a[mid] )</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return BinSearchAux(a, mid +
+1, hi, key);</tt></b>
+<br><b><tt>&nbsp;&nbsp; else</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return BinSearchAux(a, lo, mid
+- 1, key);</tt></b>
+<br><b><tt>}</tt></b></p></td>
+</tr>
+</tbody></table><table style="text-align: left; width: 100%; height: 60px;" border="1" cellpadding="0" cellspacing="0"><tbody><tr align="center"><td style="background-color: rgb(204, 204, 204);" colspan="2">Iterative versions for comparison:</td></tr><tr><td style="text-align: left; font-style: italic;">(gateway-agent indirect)</td><td style="text-align: left; font-style: italic;">(direct)</td></tr><tr><td style="text-align: left;"><b><tt>int BinSearch(const int a[], int n, int key)</tt></b>
+<br><tt>// returns index of matched item or -1 if no match</tt>
+<br><b><tt>{</tt></b>
+<br><b><tt>&nbsp;&nbsp; if (n &lt; 1) return -1;</tt></b>
+<br><b><tt>&nbsp;&nbsp; return BinSearchAux(a, 0, n - 1, key);</tt></b>
+<br><b><tt>}</tt></b>
+<p><b><tt>int BinSearchAux(const int a[], int lo, int hi, int key)</tt></b>
+<br><tt>// n &gt;= 1</tt>
+<br><b><tt>{</tt></b>
+<br><b><tt>&nbsp;&nbsp; int foundIndex = -1, mid;</tt></b>
+<br><b><tt>&nbsp;&nbsp; while (foundIndex == -1 &amp;&amp; lo &lt;= hi)</tt></b>
+<br><b><tt>&nbsp;&nbsp; {</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mid = (lo + hi) / 2;</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if ( key == a[mid] ) foundIndex
+= mid;</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; else if ( key &gt; a[mid] ) lo =
+mid + 1;</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; else hi = mid - 1;</tt></b>
+<br><b><tt>&nbsp;&nbsp; }</tt></b>
+<br><b><tt>&nbsp;&nbsp; return foundIndex</tt></b>
+<br><b><tt>}</tt></b></p></td><td style="vertical-align: top;"><b><tt>int BinSearch(const int a[], int n, int key)</tt></b>
+<br><tt>// returns index of matched item or -1 if no match</tt>
+<br><b><tt>{</tt></b>
+<br><b><tt>&nbsp;&nbsp; if (n &lt; 1) return -1;</tt></b><br><b><tt>&nbsp;&nbsp; int foundIndex = -1, lo = 0, hi = n - 1, mid;</tt></b>
+<br><p><b><tt>&nbsp;&nbsp; while (foundIndex == -1 &amp;&amp; lo &lt;= hi)</tt></b>
+<br><b><tt>&nbsp;&nbsp; {</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; mid = (lo + hi) / 2;</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if ( key == a[mid] ) foundIndex
+= mid;</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; else if ( key &gt; a[mid] ) lo =
+mid + 1;</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; else hi = mid - 1;</tt></b>
+<br><b><tt>&nbsp;&nbsp; }</tt></b>
+<br><b><tt>&nbsp;&nbsp; return foundIndex</tt></b>
+<br><b><tt>}</tt></b></p></td></tr></tbody></table><hr>Use your browser's <b>Back</b> button to go back to previous page.
+(<a href="http://www.cs.txstate.edu/%7Elk04">click here to return to my homepage</a>)
+<br>
+<hr align="left">
+</body></html>

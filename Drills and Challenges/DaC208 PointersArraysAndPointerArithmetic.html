@@ -1,0 +1,226 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link rel="icon"
+      type="image/png"
+      href="http://www.cs.txstate.edu/~lk04/MyFavicon4.png">
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.74 [en] (Win98; U) [Netscape]">
+   <meta name="Author" content="Lee S. Koh">
+<!-- saved from url=(0055)http://www.cs.colorado.edu/~main/questions/chap04q.html -->
+</head>
+<body>
+<img SRC="BannerLine1.gif" >
+<br>
+<hr><b><font size=+2>Drill and Challenges on</font></b>
+<table BGCOLOR="#FFFF99" >
+<tr>
+<td><i><font size=+2>Pointers, Arrays and Pointer Arithmetic</font></i></td>
+</tr>
+</table>
+
+<hr>
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"><img SRC="BulletL1_7x15.gif" height=15 width=7></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%">With reference to the C++ program
+in the box below, answer the questions that follow.</td>
+</tr>
+</table>
+
+<center><table BORDER CELLSPACING=0 CELLPADDING=4 COLS=1 WIDTH="95%" >
+<tr>
+<td><b><tt>#include &lt;iostream></tt></b>
+<br><b><tt>using namespace std;</tt></b>
+<p><b><tt>int main()</tt></b>
+<br><b><tt>{</tt></b>
+<br><b><tt>&nbsp;&nbsp; int *Process(int *intPtr, int size);</tt></b>
+<br><b><tt>&nbsp;&nbsp; int intArray[5] = {10, 20, 30, 40, 50}, *intPtr
+= 0;</tt></b>
+<br><b><tt>&nbsp;&nbsp; intPtr = Process(intArray, 5);</tt></b>
+<br><b><tt>&nbsp;&nbsp; cout &lt;&lt; "Desired value is " &lt;&lt; *intPtr;</tt></b>
+<br><b><tt>&nbsp;&nbsp; return 0;</tt></b>
+<br><b><tt>}</tt></b>
+<p><b><tt>int *Process(int *intPtr, int size)</tt></b>
+<br><b><tt>{</tt></b>
+<br><b><tt>&nbsp;&nbsp; int i, desiredValue = *intPtr, iDesiredValue =
+0;</tt></b>
+<br><b><tt>&nbsp;&nbsp; for (i = 1; i &lt; size; i++)</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if ( *(intPtr + i) > desiredValue
+)</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; desiredValue
+= *(intPtr + i);</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; iDesiredValue
+= i;</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</tt></b>
+<br><b><tt>&nbsp;&nbsp; return (intPtr + iDesiredValue);</tt></b>
+<br><b><tt>}</tt></b></td>
+</tr>
+</table></center>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"></td>
+
+<td VALIGN=TOP WIDTH="2%"><img SRC="BulletL2_5x12.gif" height=12 width=5></td>
+
+<td VALIGN=TOP COLSPAN="5" WIDTH="96%">What useful information is contained
+in array name <b><tt>intArray</tt></b>?</td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"></td>
+
+<td VALIGN=TOP WIDTH="2%"><img SRC="BulletL2_5x12.gif" height=12 width=5></td>
+
+<td VALIGN=TOP COLSPAN="5" WIDTH="96%">What does the expression <b><tt>(intArray
++ 2)</tt></b> represent? (<u>NOTE</u>: <i>not</i> asking for what specific
+value it evaluates to)</td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"></td>
+
+<td VALIGN=TOP WIDTH="2%"><img SRC="BulletL2_5x12.gif" height=12 width=5></td>
+
+<td VALIGN=TOP COLSPAN="5" WIDTH="96%">What is the value of&nbsp; <b><tt>*intArray</tt></b>?
+(<u>NOTE</u>: asking for the specific value the expression evaluates to)</td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"></td>
+
+<td VALIGN=TOP WIDTH="2%"><img SRC="BulletL2_5x12.gif" height=12 width=5></td>
+
+<td VALIGN=TOP COLSPAN="5" WIDTH="96%">What is the value of&nbsp; <b><tt>(*intArray
++ 2)</tt></b>? (<u>NOTE</u>: asking for the specific value the expression
+evaluates to)</td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"></td>
+
+<td VALIGN=TOP WIDTH="2%"><img SRC="BulletL2_5x12.gif" height=12 width=5></td>
+
+<td VALIGN=TOP COLSPAN="5" WIDTH="96%">What is the value of&nbsp; <b><tt>*(intArray
++ 2)</tt></b>? (<u>NOTE</u>: asking for the specific value the expression
+evaluates to)</td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"></td>
+
+<td VALIGN=TOP WIDTH="2%"><img SRC="BulletL2_5x12.gif" height=12 width=5></td>
+
+<td VALIGN=TOP COLSPAN="5" WIDTH="96%">What <i>type</i> of value is returned
+by <b><tt>Process</tt></b>? (<u>NOTE</u>: <i>not</i> asking for the specific
+value that is returned or what it actually represents)</td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"></td>
+
+<td VALIGN=TOP WIDTH="2%"><img SRC="BulletL2_5x12.gif" height=12 width=5></td>
+
+<td VALIGN=TOP COLSPAN="5" WIDTH="96%">Describe the value that <b><tt>intPtr</tt></b>
+is initialized to when <b><tt>Process</tt></b> is called. (<u>NOTE</u>:
+not asking for the specific value, rather asking for what the value represents)</td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"></td>
+
+<td VALIGN=TOP WIDTH="2%"><img SRC="BulletL2_5x12.gif" height=12 width=5></td>
+
+<td VALIGN=TOP COLSPAN="5" WIDTH="96%">What does the <b><tt>for</tt></b>
+loop that appears in <b><tt>Process</tt></b> do? (<u>NOTE</u>: asking for
+what specifically it does)</td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"></td>
+
+<td VALIGN=TOP WIDTH="2%"><img SRC="BulletL2_5x12.gif" height=12 width=5></td>
+
+<td VALIGN=TOP COLSPAN="5" WIDTH="96%">What value will be displayed by
+the <b><tt>cout</tt></b> statement in <b><tt>main</tt></b>? (<u>NOTE</u>:
+asking for what specifically is displayed)</td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"></td>
+
+<td VALIGN=TOP WIDTH="2%"><img SRC="BulletL2_5x12.gif" height=12 width=5></td>
+
+<td VALIGN=TOP COLSPAN="5" WIDTH="96%"><i>(General Question.) </i>Why is
+the index of an array in C and C++ begin with <b><tt>0</tt></b> and not
+<b><tt>1</tt></b>
+(as is so in some other programming languages)?</td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%">
+<hr SIZE=1 WIDTH="100%"></td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"><img SRC="BulletL1_7x15.gif" height=15 width=7></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%">Suppose you are writing a function
+that receives a <i>pointer</i> as one of its parameters. Clearly describe
+how you would decide whether the pointer should be passed by value or by
+reference. Write the code for a simple C++ function to illustrate each
+of the two cases: (a) passing by value should be used, and (b) passing
+by reference should be used.</td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%">
+<hr SIZE=1 WIDTH="100%"></td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"><img SRC="BulletL1_7x15.gif" height=15 width=7></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%">Modify the program of <b><i>Question
+1</i></b> above, making <b><tt>Process</tt></b> a <i>void</i> function
+instead of a value-returning function. The program should still work exactly
+as before.</td>
+</tr>
+</table>
+
+<hr WIDTH="100%">
+</body>
+</html>

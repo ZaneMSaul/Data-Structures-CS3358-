@@ -1,0 +1,40 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link rel="icon"
+      type="image/png"
+      href="http://www.cs.txstate.edu/~lk04/MyFavicon4.png">
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.8 [en] (Windows NT 5.0; U) [Netscape]">
+   <meta name="Author" content="Lee S. Koh">
+</head>
+<body>
+<img SRC="BannerLine1.gif" >
+<hr><b><font size=+2>Recursion Example 7: <tt>CountNonNegRecur</tt></font></b>
+<center>
+<hr></center>
+Can you see that <i>something's amiss</i> in the following recursive function?
+<blockquote><b><tt>int CountNonNegRecur(const int a[], int n)</tt></b>
+<br><tt>// n >= 1 assumed</tt>
+<br><b><tt>{</tt></b>
+<br><b><tt>&nbsp;&nbsp; if (n == 1)</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (a[0] >= 0)</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return 1;</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; else</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return 0;</tt></b>
+<br><b><tt>&nbsp;&nbsp; else</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (a[0] >= 0)</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return 1 +
+CountNonNegRecur(a + 1, n - 1);</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; else</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; CountNonNegRecur(a
++ 1, n - 1);</tt></b>
+<br><b><tt>}</tt></b></blockquote>
+It illustrates a <i>common error</i> too many students tend to make.
+<br>
+<hr>Use your browser's <b>Back</b> button to go back to previous page.
+(<a href="http://www.cs.txstate.edu/~lk04">click here to return to my homepage</a>)
+<br>
+<hr align="left">
+</body>
+</html>

@@ -1,0 +1,273 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link rel="icon"
+      type="image/png"
+      href="http://www.cs.txstate.edu/~lk04/MyFavicon4.png">
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.74 [en] (Win98; U) [Netscape]">
+   <meta name="Author" content="Lee S. Koh">
+<!-- saved from url=(0055)http://www.cs.colorado.edu/~main/questions/chap04q.html -->
+</head>
+<body>
+<img SRC="BannerLine1.gif" >
+<br>
+<hr><b><font size=+2>Drills and Challenges on</font></b>
+<table BGCOLOR="#FFFF99" >
+<tr>
+<td><i><font size=+2>Pointers, Memory and Memory Management</font></i></td>
+</tr>
+</table>
+
+<hr WIDTH="100%">
+<table COLS=1 WIDTH="100%" >
+<tr>
+<td>Some C++ programmer has declared two pointers as shown in the following
+two lines:</td>
+</tr>
+</table>
+
+<table COLS=1 WIDTH="100%" >
+<tr>
+<td><b><tt>&nbsp;&nbsp;&nbsp;&nbsp; int *intPtr1 = 0;</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp; int *intPtr2 = 0;</tt></b></td>
+</tr>
+</table>
+
+<table COLS=1 WIDTH="100%" >
+<tr>
+<td>The programmer then proceeds to use the pointers as shown in each of
+the following code segments. Identify and explain the problem(s) in each
+of the code segments. Be sure to specifically identify which line is causing
+which problem where possible.</td>
+</tr>
+</table>
+
+<table COLS=1 WIDTH="100%" >
+<tr>
+<td><u>NOTE:</u> These code segments are independent of each other (i.e.
+they are not related to each other). Also, the pointers have not been used
+in any way before each code segment.</td>
+</tr>
+</table>
+
+<hr SIZE=1 WIDTH="100%">
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"><img SRC="BulletL1_7x15.gif" height=15 width=7></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%"><b><tt>cout &lt;&lt; intPtr1;</tt></b>
+<br><b><tt>cout &lt;&lt; *intPtr2;</tt></b></td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%">
+<hr SIZE=1 WIDTH="100%"></td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"><img SRC="BulletL1_7x15.gif" height=15 width=7></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%"><b><tt>cout &lt;&lt; "Enter an integer:
+";</tt></b>
+<br><b><tt>cin >> *intPtr1;</tt></b></td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%">
+<hr SIZE=1 WIDTH="100%"></td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"><img SRC="BulletL1_7x15.gif" height=15 width=7></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%"><b><tt>intPtr1 = new int;</tt></b>
+<br><b><tt>*intPtr1 = 123;</tt></b>
+<br><b><tt>cout &lt;&lt; *intPtr1 &lt;&lt; endl;</tt></b>
+<br><b><tt>delete intPtr1;</tt></b>
+<br><b><tt>delete intPtr1;</tt></b></td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%">
+<hr SIZE=1 WIDTH="100%"></td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"><img SRC="BulletL1_7x15.gif" height=15 width=7></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%"><b><tt>int x = 123;</tt></b>
+<br><b><tt>intPtr1 = &amp;x;</tt></b>
+<br><b><tt>cout &lt;&lt; *intPtr1 &lt;&lt; endl;</tt></b>
+<br><b><tt>delete intPtr1;</tt></b></td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%">
+<hr SIZE=1 WIDTH="100%"></td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"><img SRC="BulletL1_7x15.gif" height=15 width=7></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%"><b><tt>intPtr1 = new int;</tt></b>
+<br><b><tt>intPtr2 = new int;</tt></b>
+<br><b><tt>*intPtr1 = 123;</tt></b>
+<br><b><tt>*intPtr2 = 456;</tt></b>
+<br><b><tt>intPtr2 = intPtr1;</tt></b></td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%">
+<hr SIZE=1 WIDTH="100%"></td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"><img SRC="BulletL1_7x15.gif" height=15 width=7></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%"><b><tt>intPtr1 = new int;</tt></b>
+<br><b><tt>*intPtr1 = 123;</tt></b>
+<br><b><tt>intPtr2 = intPtr1;</tt></b>
+<br><b><tt>delete intPtr1;</tt></b>
+<br><b><tt>intPtr1 = 0;</tt></b></td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%">
+<hr SIZE=1 WIDTH="100%"></td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"><img SRC="BulletL1_7x15.gif" height=15 width=7></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%"><b><tt>intPtr1 = new int;</tt></b>
+<br><b><tt>intPtr2 = new int;</tt></b>
+<br><b><tt>*intPtr1 = 123;</tt></b>
+<br><b><tt>*intPtr2 = 456;</tt></b>
+<br><b><tt>cout &lt;&lt; *intPtr1 + *intPtr2 &lt;&lt; endl;</tt></b>
+<br><b><tt>intPtr2 = new int;</tt></b>
+<br><b><tt>*intPtr2 = *intPtr1;</tt></b></td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%">
+<hr SIZE=1 WIDTH="100%"></td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"><img SRC="BulletL1_7x15.gif" height=15 width=7></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%"><b><tt>intPtr1 = AddressOfAnInt();</tt></b>
+<br><b><tt>cout &lt;&lt; *intPtr1 &lt;&lt; endl;</tt></b></td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%">where function <b><tt>AddressOfAnInt</tt></b>
+has the following definition:</td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%"><b><tt>int * AddressOfAnInt()</tt></b>
+<br><b><tt>{</tt></b>
+<br><b><tt>&nbsp;&nbsp; int anInt;</tt></b>
+<p><b><tt>&nbsp;&nbsp; cout &lt;&lt; "Enter an integer: ";</tt></b>
+<br><b><tt>&nbsp;&nbsp; cin >> anInt;</tt></b>
+<p><b><tt>&nbsp;&nbsp; return &amp;anInt;</tt></b>
+<br><b><tt>}</tt></b></td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%">
+<hr SIZE=1 WIDTH="100%"></td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"><img SRC="BulletL1_7x15.gif" height=15 width=7></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%"><b><tt>GetAddressOfAnInt(intPtr1);</tt></b>
+<br><b><tt>cout &lt;&lt; *intPtr1 &lt;&lt; endl;</tt></b></td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%">where function <b><tt>GetAddressOfAnInt</tt></b>
+has the following definition:</td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%"><b><tt>void GetAddressOfAnInt (int
+* intPtr)</tt></b>
+<br><b><tt>{</tt></b>
+<br><b><tt>&nbsp;&nbsp; intPtr = new int;</tt></b>
+<p><b><tt>&nbsp;&nbsp; cout &lt;&lt; "Enter an integer: ";</tt></b>
+<br><b><tt>&nbsp;&nbsp; cin >> *intPtr;</tt></b>
+<br><b><tt>}</tt></b></td>
+</tr>
+</table>
+
+<hr WIDTH="100%">
+</body>
+</html>

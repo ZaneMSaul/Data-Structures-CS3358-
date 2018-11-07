@@ -1,0 +1,399 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link rel="icon"
+      type="image/png"
+      href="http://www.cs.txstate.edu/~lk04/MyFavicon4.png">
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.74 [en] (Win98; U) [Netscape]">
+   <meta name="Author" content="Lee S. Koh">
+<!-- saved from url=(0055)http://www.cs.colorado.edu/~main/questions/chap04q.html -->
+</head>
+<body>
+<img SRC="BannerLine1.gif" >
+<br>
+<hr><b><font size=+2>Drill and Challenges 1 on</font></b>
+<table BGCOLOR="#FFFF99" >
+<tr>
+<td><i><font size=+2>Pointers (Part 1)</font></i></td>
+</tr>
+</table>
+
+<hr>
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"><img SRC="BulletL1_7x15.gif" height=15 width=7></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%">Draw a picture of memory after these
+statements:</td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%"><b><tt>int i = 42, k = 80;<br>
+int* p1 = &amp;i, *p2 = &amp;k;<br>
+*p1 = *p2;</tt></b></td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%">
+<hr SIZE=1 WIDTH="100%"></td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"><img SRC="BulletL1_7x15.gif" height=15 width=7></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%">Draw a picture of memory after these
+statements:</td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%"><b><tt>int i = 42, k = 80;<br>
+int* p1 = &amp;i, *p2 = &amp;k;<br>
+p1 = p2;</tt></b></td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%">
+<hr SIZE=1 WIDTH="100%"></td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"><img SRC="BulletL1_7x15.gif" height=15 width=7></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%">Here is a function declaration:</td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%"><b><tt>void goo(int *x, int *y)<br>
+{<br>
+&nbsp;&nbsp; int z = *x;<br>
+&nbsp;&nbsp; *x = *y;<br>
+&nbsp;&nbsp; *y = z;<br>
+&nbsp;&nbsp; x = y;<br>
+}</tt></b></td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%">Draw a picture of memory after these
+statements:</td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%"><b><tt>int i = 1, k = 2;<br>
+int *p1 = &amp;i, *p2 = &amp;k;<br>
+goo(p1, p2);</tt></b></td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%">
+<hr SIZE=1 WIDTH="100%"></td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"><img SRC="BulletL1_7x15.gif" height=15 width=7></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%">Consider the following statements:</td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%"><b><tt>int *p;<br>
+int i;<br>
+int k;<br>
+i = 42;<br>
+k = i;<br>
+p = &amp;i;</tt></b></td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%">After these statements, which of
+the following statements will change the value of <tt>i</tt> to <tt>75</tt>?</td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%"><tt>(A) k = 75;<br>
+(B) *k = 75;<br>
+(C) p = 75;<br>
+(D) *p = 75;<br>
+(E) Two or more of the answers will change i to 75.</tt></td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%">
+<hr SIZE=1 WIDTH="100%"></td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"><img SRC="BulletL1_7x15.gif" height=15 width=7></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%">Consider the following statements:</td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%"><b><tt>int i = 42, j = 80;<br>
+int *p1 = &amp;i, *p2 = &amp;j;<br>
+*p1 = *p2;<br>
+cout &lt;&lt; i &lt;&lt; j &lt;&lt; endl;</tt></b></td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%">What numbers are printed by the
+output statement?</td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%"><tt>(A) 42 and then another 42<br>
+(B) 42 and then 80<br>
+(C) 80 and then 42<br>
+(D) 80 and then another 80</tt></td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%">
+<hr SIZE=1 WIDTH="100%"></td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"><img SRC="BulletL1_7x15.gif" height=15 width=7></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%">What is printed by these statements?</td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%"><b><tt>int i = 1, k = 2;<br>
+int *p1 = &amp;i, *p2 = &amp;k;<br>
+p1 = p2;<br>
+*p1 = 3;<br>
+*p2 = 4;<br>
+cout &lt;&lt; i;</tt></b></td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%"><tt>(A) 1<br>
+(B) 2<br>
+(C) 3<br>
+(D) 4</tt></td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%">
+<hr SIZE=1 WIDTH="100%"></td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"><img SRC="BulletL1_7x15.gif" height=15 width=7></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%">What is printed by these statements?</td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%"><b><tt>int i = 1, k = 2;<br>
+int* p1 = &amp;i, *p2 = &amp;k;<br>
+p1 = p2;<br>
+*p1 = 3;<br>
+*p2 = 4;<br>
+cout &lt;&lt; k;</tt></b></td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%"><tt>(A) 1<br>
+(B) 2<br>
+(C) 3<br>
+(D) 4</tt></td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%">
+<hr SIZE=1 WIDTH="100%"></td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"><img SRC="BulletL1_7x15.gif" height=15 width=7></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%">What is printed by these statements?</td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%"><b><tt>int i = 1, k = 2;<br>
+int* p1 = &amp;i, *p2 = &amp;k;<br>
+*p1 = *p2;<br>
+*p1 = 3;<br>
+*p2 = 4;<br>
+cout &lt;&lt; i;</tt></b></td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%"><tt>(A) 1<br>
+(B) 2<br>
+(C) 3<br>
+(D) 4</tt></td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%">
+<hr SIZE=1 WIDTH="100%"></td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"><img SRC="BulletL1_7x15.gif" height=15 width=7></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%">Here is a function declaration:</td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%"><b><tt>void goo(int* x)<br>
+{<br>
+&nbsp;&nbsp; *x = 1;<br>
+}</tt></b></td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%">Suppose that <b><tt>a</tt></b> is
+an <b><tt>int*</tt></b> variable pointing to some integer, and <b><tt>*a</tt></b>
+is equal to zero. What is printed if you print <b><tt>*a</tt></b> after
+the function call <b><tt>goo(a)</tt></b>?</td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%"><tt>(A) 0<br>
+(B) 1<br>
+(C) address of a<br>
+(D) address of x<br>
+(E) None of the above</tt></td>
+</tr>
+</table>
+
+<hr>
+<ol START=3>
+<pre></pre>
+</ol>
+
+</body>
+</html>

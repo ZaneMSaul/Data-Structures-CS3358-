@@ -1,0 +1,97 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link rel="icon"
+      type="image/png"
+      href="http://www.cs.txstate.edu/~lk04/MyFavicon4.png">
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.8 [en] (Windows NT 5.0; U) [Netscape]">
+   <meta name="Author" content="Lee S. Koh">
+</head>
+<body>
+<img SRC="BannerLine1.gif" >
+<br>
+<hr>
+<table COLS=1 WIDTH="100%" >
+<tr>
+<td><b>In-class Example: Function to determine if a given linked list has
+at least one node containing a data item equal to that of another node.</b></td>
+</tr>
+</table>
+
+<hr>
+<table COLS=1 WIDTH="100%" >
+<tr>
+<td></td>
+</tr>
+</table>
+
+<table COLS=2 WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"><img SRC="BulletL1_7x15.gif" height=15 width=7></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%">By definition:</td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"></td>
+
+<td VALIGN=TOP WIDTH="2%"><img SRC="BulletL2_5x12.gif" height=12 width=5></td>
+
+<td VALIGN=TOP COLSPAN="5" WIDTH="96%">An empty list cannot have duplicates.</td>
+</tr>
+</table>
+
+<table COLS=2 WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"><img SRC="BulletL1_7x15.gif" height=15 width=7></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%">Code:</td>
+</tr>
+</table>
+
+<table COLS=2 WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%">
+<table BORDER CELLSPACING=0 COLS=1 WIDTH="100%" >
+<tr>
+<td><tt>bool HasDup(Node* head)</tt>
+<br><tt>{</tt>
+<br><tt>&nbsp;&nbsp; if (head == 0 || head->link == 0) return false;</tt>
+<br><tt>&nbsp;&nbsp; Node* cursor = 0;</tt>
+<br><tt>&nbsp;&nbsp; int anchorData;</tt>
+<br><tt>&nbsp;&nbsp; while (head->link != 0) // anchor node not last node</tt>
+<br><tt>&nbsp;&nbsp; {</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; anchorData = head->data;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cursor = head->link; // points to
+1st node downstream of anchor node</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; while (cursor != 0)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (cursor->data
+== anchorData) return true;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cursor = cursor->link;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; head = head->link;</tt>
+<br><tt>&nbsp;&nbsp; }</tt>
+<br><tt>&nbsp;&nbsp; return false;</tt>
+<br><tt>}</tt></td>
+</tr>
+
+<tr>
+<td></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+<hr>Use your browser's <b>Back</b> button to go back to previous page.
+(<a href="http://www.cs.txstate.edu/~lk04">click here to return to my homepage</a>)
+<br>
+<hr align="left">
+</body>
+</html>

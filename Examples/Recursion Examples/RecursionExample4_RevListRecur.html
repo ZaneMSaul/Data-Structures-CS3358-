@@ -1,0 +1,88 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link rel="icon"
+      type="image/png"
+      href="http://www.cs.txstate.edu/~lk04/MyFavicon4.png">
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.8 [en] (Windows NT 5.0; U) [Netscape]">
+   <meta name="Author" content="Lee S. Koh">
+</head>
+<body>
+<img SRC="BannerLine1.gif" >
+<hr><b><font size=+2>Recursion Example 4: <tt>RevListRecur</tt></font></b>
+<center>
+<hr></center>
+Two variations of one way (<i>less efficient</i> compared to the another
+way shown next):
+<table BORDER CELLSPACING=0 COLS=2 WIDTH="100%" >
+<tr>
+<td>Keep <i>last</i> node, reverse the rest, insert kept node as <i>first</i>:</td>
+
+<td>Keep <i>first</i> node, reverse the rest, append kept node as <i>last</i>:</td>
+</tr>
+
+<tr>
+<td><b><tt>void RevListRecur1a(Node*&amp; headPtr)</tt></b>
+<br><b><tt>{</tt></b>
+<br><b><tt>&nbsp; if (headPtr == 0 || headPtr->link == 0)</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp; return;</tt></b>
+<br><b><tt>&nbsp; Node *precursor = headPtr,&nbsp;</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *cursor = headPtr->link;</tt></b>
+<br><b><tt>&nbsp; while (cursor->link != 0)</tt></b>
+<br><b><tt>&nbsp; {</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp; precursor = cursor;</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp; cursor = cursor->link;</tt></b>
+<br><b><tt>&nbsp; }</tt></b>
+<br><b><tt>&nbsp; precursor->link = 0;</tt></b>
+<br><b><tt>&nbsp; RevListRecur1a(headPtr);</tt></b>
+<br><b><tt>&nbsp; cursor->link = headPtr;</tt></b>
+<br><b><tt>&nbsp; headPtr = cursor;</tt></b>
+<br><b><tt>}</tt></b></td>
+
+<td><b><tt>void RevListRecur1b(Node*&amp; headPtr)</tt></b>
+<br><b><tt>{</tt></b>
+<br><b><tt>&nbsp; if (headPtr == 0 || headPtr->link == 0)</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp; return;</tt></b>
+<br><b><tt>&nbsp; Node *headListMinusHeadNode = headPtr->link;</tt></b>
+<br><b><tt>&nbsp; RevListRecur1b(headListMinusHeadNode);</tt></b>
+<br><b><tt>&nbsp; Node *cursor = headListMinusHeadNode;</tt></b>
+<br><b><tt>&nbsp; while (cursor->link != 0)</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp; cursor = cursor->link;</tt></b>
+<br><b><tt>&nbsp; cursor->link = headPtr;</tt></b>
+<br><b><tt>&nbsp; headPtr->link = 0;</tt></b>
+<br><b><tt>&nbsp; headPtr = headListMinusHeadNode;</tt></b>
+<br><b><tt>}</tt></b>
+<p>&nbsp;</td>
+</tr>
+</table>
+
+<p>Second way discussed (<i>more efficient</i> compared to the first way
+discussed):
+<table BORDER CELLSPACING=0 COLS=1 WIDTH="100%" >
+<tr>
+<td><b><tt>void RevListRecur2(Node*&amp; headPtr)</tt></b>
+<br><b><tt>{</tt></b>
+<br><b><tt>&nbsp;&nbsp; if (headPtr == 0 || headPtr->link == 0)</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return;</tt></b>
+<br><b><tt>&nbsp;&nbsp; Node *headListMinusHeadNode = headPtr->link;</tt></b>
+<br><b><tt>&nbsp;&nbsp; Node *tailListMinusHeadNodeReversed = headListMinusHeadNode;</tt></b>
+<br><b><tt>&nbsp;&nbsp; RevListRecur2(headListMinusHeadNode);</tt></b>
+<br><b><tt>&nbsp;&nbsp; headPtr->link = 0;</tt></b>
+<br><b><tt>&nbsp;&nbsp; tailListMinusHeadNodeReversed->link = headPtr;</tt></b>
+<br><b><tt>&nbsp;&nbsp; headPtr = headListMinusHeadNode;</tt></b>
+<br><b><tt>}</tt></b></td>
+</tr>
+</table>
+
+<p>Note that in the above examples, some variables could have been eliminated
+to give more compact code. For clearity, that was not done. Also, risking
+telling the obvious, the above are <i><u>not</u></i> the only ways to reverse
+a linked list recursively.
+<br>
+<hr>Use your browser's <b>Back</b> button to go back to previous page.
+(<a href="http://www.cs.txstate.edu/~lk04">click here to return to my homepage</a>)
+<br>
+<hr align="left">
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link rel="icon"
+      type="image/png"
+      href="http://www.cs.txstate.edu/~lk04/MyFavicon4.png">
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.8 [en] (Windows NT 5.0; U) [Netscape]">
+   <meta name="Author" content="Lee S. Koh">
+<!-- saved from url=(0080)http://wwwcsif.cs.ucdavis.edu/~fletcher/classes/110W98/lecture_notes/lists2.html -->
+</head>
+<body>
+<img SRC="BannerLine1.gif" >
+<hr><b><font size=+3>Linked List Node Class and Toolkit</font></b>
+<br>
+<hr>
+<p>In Lecture Note <b><i>312LinkedListConceptualIntro</i></b>, the fundamental
+issues of linked lists are discussed using a node specification based on
+<b><tt>C-struct</tt></b>
+(that allows us to package the <i>data field</i> and <i>link field</i>
+of an item of a linked list, called <b><tt>Node</tt></b>, in a <i>minimal</i>
+way &ndash; the <b><tt>Node</tt></b> data type specified as such consists of
+<i>only
+data members</i> and a <b><tt>Node</tt></b> object's data members can be
+freely read and/or changed by any function to which the object is visible).
+Doing so minimizes the need to deal with <i>implementation</i> details
+(that are language related rather than data structure related) and allows
+the discussion to be better focussed on aspects that are <i>data structure</i>
+related. However, as alluded to in <b><i>312LinkedListConceptualIntro</i></b>,
+after having understood the linked list data structure, we would ultimately
+want to learn how to implement and apply the data structure using the features
+of our chosen language (C++) that offer the best support (<b>class</b>,
+<i>etc.</i>).
+Along this line, we will augment our study of linked lists with some C++
+implementational considerations by reviewing the approach and code discussed
+in Chapter 5 of the textbook.
+<p><b><font size=+1>Specification and implementation for a <tt>node</tt>
+class</font></b>
+<p>Section 5.1 discusses the specification and implementation for a <b><tt>node</tt></b>
+class. Putting the pieces together (with some slight modifications) results
+in the following header and implementation files:
+<blockquote>
+<ul>
+<li>
+<a href="313LinkedListNodeClassAndToolkitRef01.html">Node1WithoutToolkit.h</a></li>
+
+<li>
+<a href="313LinkedListNodeClassAndToolkitRef02.html">Node1WithoutToolkit.cpp</a></li>
+</ul>
+</blockquote>
+<b><font size=+1>Using the <tt>node</tt> class</font></b>
+<p>Equipped with the fundamental knowledge on the linked list data structure
+(and the C++ <b><tt>class</tt></b> feature), we can use the <b><tt>node</tt></b>
+class as specified and implemented in the preceding section to implement
+various ADTs. The following files illustrate one way of doing so with the
+<i>bag</i>
+ADT:
+<blockquote>
+<ul>
+<li>
+<a href="313LinkedListNodeClassAndToolkitRef01.html">Node1WithoutToolkit.h</a></li>
+
+<li>
+<a href="313LinkedListNodeClassAndToolkitRef02.html">Node1WithoutToolkit.cpp</a></li>
+
+<li>
+<a href="313LinkedListNodeClassAndToolkitRef03.html">Bag3NotUsgToolkit.h</a></li>
+
+<li>
+<a href="313LinkedListNodeClassAndToolkitRef04.html">Bag3NotUsgToolkit.cpp</a></li>
+
+<li>
+<a href="313LinkedListNodeClassAndToolkitRef05.html">Bag3Demo.cpp</a></li>
+
+<li>
+(<a href="Bag3NotUsgToolkit.zip">all files zipped</a>)</li>
+</ul>
+</blockquote>
+<b><font size=+1>Rationale behind toolkit</font></b>
+<p>In using the <b><tt>node</tt></b> class to implement the <i>bag</i>
+ADT using linked list as shown in the preceding section, some functions
+implementing <i>common operations for manipulating a linked list</i> are
+written to facilitate the implementation of the various <i>bag</i> operations.
+These common linked list manipulation functions are specifically written
+for the <i>bag</i> class and are included as non-member functions of the
+class. Now, if we also want to use the same <b><tt>node</tt></b> class
+to implement yet other ADTs (such as the <i>sequence</i> ADT) with linked
+list, we will most likely find the same set of common linked list manipulation
+functions useful. We can then reuse the set of common linked list manipulation
+functions (in the same fashion as we did implementing the <i>bag</i> ADT)
+by simply reproducing them in the other ADTs. However, a better and more
+elegant approach is to make the set of common linked list manipulation
+functions into a separate
+<i>function library</i> that requires the specification
+and implementation of the functions to be written only once (instead of
+being reproduced over and over). Such a function library is referred to
+by the authors of the textbook as a <i>toolkit</i>. Moreover, because the
+<i>linked
+list toolkit</i> (library of common linked list manipulation functions)
+is very closely related to the <b><tt>node</tt></b> class (since the linked
+lists that the functions operate on are constructed from instances of the
+<b><tt>node</tt></b>
+class), the authors have elected to combine the specifications for the
+node class and the toolkit functions into one specification; fittingly,
+the implementations for the node class and the toolkit functions are also
+combined into one implementation.
+<p><b><font size=+1>Combined specification/implementation for a <tt>node</tt>
+class and toolkit functions</font></b>
+<p>The combined specification and implementation are given in the following
+links (again these are slightly modified versions):
+<blockquote>
+<li>
+<a href="313LinkedListNodeClassAndToolkitRef06.html">Node1.h</a></li>
+
+<li>
+<a href="313LinkedListNodeClassAndToolkitRef07.html">Node1.cpp</a></li>
+</blockquote>
+<b><font size=+1>Using the linked list toolkit (<tt>node</tt> class and
+toolkit functions)</font></b>
+<p>The authors of the textbook illustrate this in Section 5.3, which discusses
+a third implementation of the <i>bag</i> ADT (using linked list). The following
+are slightly modified versions of the various files:
+<blockquote>
+<ul>
+<li>
+<a href="313LinkedListNodeClassAndToolkitRef06.html">Node1.h</a></li>
+
+<li>
+<a href="313LinkedListNodeClassAndToolkitRef07.html">Node1.cpp</a></li>
+
+<li>
+<a href="313LinkedListNodeClassAndToolkitRef08.html">Bag3.h</a></li>
+
+<li>
+<a href="313LinkedListNodeClassAndToolkitRef09.html">Bag3.cpp</a></li>
+
+<li>
+<a href="313LinkedListNodeClassAndToolkitRef10.html">Bag3Demo.cpp</a></li>
+
+<li>
+(<a href="Bag3UsgToolkit.zip">all files zipped</a>)</li>
+</ul>
+</blockquote>
+<b><font size=+1>Textbook reading</font></b>
+<p>Chapter 5.
+<p>
+<hr><a href="http://www.cs.txstate.edu/~lk04">Return to my homepage.</a>
+(Use your browser's <b>Back</b> button to go back to previous page.)
+<address>
+
+<hr align="left"><script language="JavaScript"> var theDate = ""; theDate = document.lastModified;
+document.write("Last Updated: "); document.write(theDate); document.write();
+</script>
+</address>
+
+</body>
+</html>

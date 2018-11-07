@@ -1,0 +1,138 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link rel="icon"
+      type="image/png"
+      href="http://www.cs.txstate.edu/~lk04/MyFavicon4.png">
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.8 [en] (Windows NT 5.0; U) [Netscape]">
+   <meta name="Author" content="Lee S. Koh">
+</head>
+<body>
+<img SRC="BannerLine1.gif" >
+<br>
+<hr>
+<table COLS=1 WIDTH="100%" >
+<tr>
+<td><b>In-class Example: Function to determine if the first of 2 given
+linked lists is contained in the second.</b></td>
+</tr>
+</table>
+
+<hr>
+<table COLS=1 WIDTH="100%" >
+<tr>
+<td></td>
+</tr>
+</table>
+
+<table COLS=2 WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"><img SRC="BulletL1_7x15.gif" height=15 width=7></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%">By definition:</td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"></td>
+
+<td VALIGN=TOP WIDTH="2%"><img SRC="BulletL2_5x12.gif" height=12 width=5></td>
+
+<td VALIGN=TOP COLSPAN="5" WIDTH="96%">List 1 is contained in List 2 if
+each <i>distinct</i> data item in List 1 occurs at least once in List 2.</td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"></td>
+
+<td VALIGN=TOP WIDTH="2%"><img SRC="BulletL2_5x12.gif" height=12 width=5></td>
+
+<td VALIGN=TOP COLSPAN="5" WIDTH="96%">An empty list is always contained
+in another list, even if the latter is empty.</td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"></td>
+
+<td VALIGN=TOP WIDTH="2%"><img SRC="BulletL2_5x12.gif" height=12 width=5></td>
+
+<td VALIGN=TOP COLSPAN="5" WIDTH="96%">Some implications of the definition:</td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"></td>
+
+<td VALIGN=TOP WIDTH="2%"></td>
+
+<td VALIGN=TOP WIDTH="2%"><img SRC="BulletL3_5x12.gif" height=12 width=5></td>
+
+<td VALIGN=TOP COLSPAN="4" WIDTH="94%">List 2 can be shorter (have less
+number of nodes) than List 1 and still contain List 1. For instance, if
+List 1 has 1 million nodes all containing the same value, it contains only
+one <i>distinct</i> value. If List 2 contains only one node and the value
+of the data item in that node matches the only one distinct value contained
+in List 1, then List 1 is contained in List 2.</td>
+</tr>
+</table>
+
+<table COLS=2 WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"><img SRC="BulletL1_7x15.gif" height=15 width=7></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%">Code:</td>
+</tr>
+</table>
+
+<table COLS=2 WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%">
+<table BORDER CELLSPACING=0 COLS=1 WIDTH="100%" >
+<tr>
+<td><tt>bool LL1IsContainedInLL2(Node* head1, Node* head2)</tt>
+<br><tt>{</tt>
+<br><tt>&nbsp;&nbsp; if (head1 == 0) return true;&nbsp; // empty list is
+always contained (even if 2nd list is empty)</tt>
+<br><tt>&nbsp;&nbsp; if (head2 == 0) return false; // list1 can't be empty
+so can't be contained if list2 is empty</tt>
+<br><tt>&nbsp;&nbsp; Node* copyOfHead2 = head2;</tt>
+<br><tt>&nbsp;&nbsp; while (head1 != 0)</tt>
+<br><tt>&nbsp;&nbsp; {</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; while (copyOfHead2 != 0)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (head1->data
+== copyOfHead2->data) break;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; copyOfHead2 =
+copyOfHead2->link;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; }</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (copyOfHead2 == 0) return false;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; head1 = head1->link;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; copyOfHead2 = head2;</tt>
+<br><tt>&nbsp;&nbsp; }</tt>
+<br><tt>&nbsp;&nbsp; return true;</tt>
+<br><tt>}</tt></td>
+</tr>
+
+<tr>
+<td></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+<hr>Use your browser's <b>Back</b> button to go back to previous page.
+(<a href="http://www.cs.txstate.edu/~lk04">click here to return to my homepage</a>)
+<br>
+<hr align="left">
+</body>
+</html>

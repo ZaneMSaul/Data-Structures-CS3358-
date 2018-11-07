@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html><head>
+<link rel="icon" type="image/png" href="http://www.cs.txstate.edu/%7Elk04/MyFavicon4.png">
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.74 [en] (Win98; U) [Netscape]">
+   <meta name="Author" content="Lee S. Koh"><!-- saved from url=(0055)http://www.cs.colorado.edu/~main/questions/chap04q.html --></head>
+<body>
+<img src="BannerLine1.gif">
+<br>
+<hr><b><font size="+2">Drills and Challenges on</font></b>
+<table bgcolor="#ffff99">
+<tbody><tr>
+<td><i><font size="+2">Array and Memory Management Pitfalls</font></i></td>
+</tr>
+</tbody></table>
+
+<hr width="100%"><table cols="1" width="100%">
+<tbody><tr>
+<td>
+
+<p class="MsoNormal" style="margin-left: 0.25in; text-indent: -0.25in;"><span style="font-size: 12pt;"><span style=""><span style="font-family: &quot;Times New Roman&quot;; font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;"></span></span></span><span style="font-size: 12pt;">Suppose a friend
+of yours wrote the following declaration statements within and at the top of
+the </span><b style=""><span style="font-size: 10pt; font-family: &quot;Courier New&quot;;">main</span></b><span style="font-size: 12pt;">
+function of a C++ program:<o:p></o:p></span></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p class="MsoNormal" style="margin-left: 0.25in;"><b style=""><span style="font-size: 10pt; font-family: &quot;Courier New&quot;;">int iArray[] =
+{1, 2, 3, 4, 5};<o:p></o:p><br>int x = 1;<o:p></o:p><br>int* iPtr1 =
+new int;<o:p></o:p><br>int* iPtr2 =
+&amp;x;<o:p></o:p><br>char cArray1[]
+= "abc";<o:p></o:p><br>char cArray2[]
+= {'a', 'b', 'c'};<o:p></o:p></span></b></p>
+
+
+
+
+
+
+
+
+
+<p class="MsoNormal" style="margin-left: 0in; text-indent: 0in;"><span style="font-size: 12pt;">Your
+friend then made the claims below. Indicate whether each of the claims is <b style="">T</b>(rue) of <b style="">F</b>(alse). Assume:<o:p></o:p></span><span style="font-size: 12pt; font-family: Symbol;"><span style=""><br>--<span style="font-family: &quot;Times New Roman&quot;; font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><span style="font-size: 12pt;">All required
+header files have been included.<o:p></o:p></span><span style="font-size: 12pt; font-family: Symbol;"><span style=""><br>--<span style="font-family: &quot;Times New Roman&quot;; font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><span style="font-size: 12pt;">There is no memory
+allocation failure.<o:p></o:p></span><span style="font-size: 12pt; font-family: Symbol;"><span style=""><br>--<span style="font-family: &quot;Times New Roman&quot;; font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></span></span><span style="font-size: 12pt;">If the claim
+involves a new statement, that statement is added <b style=""><i style="">immediately after</i></b><i style=""> the above set of declaration statements</i>.<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin-left: 0in;"><u><span style="font-size: 12pt;">NOTE</span></u><span style="font-size: 12pt;">: Each part of the question is <i style="">independent</i> of all the others.<o:p></o:p></span></p>
+
+
+
+<p class="MsoNormal" style="margin: 0in 0in 6pt; text-indent: 0in;"><span style="font-size: 12pt; font-family: monospace;"><o:p></o:p><span style="">(a) &nbsp;<span style="font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;"></span></span></span><span style="font-size: 12pt;">[<b style=""> T<span style="">&nbsp;&nbsp; </span>F </b>]<span style="">&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span style="font-size: 10pt; font-family: &quot;Courier New&quot;;">cout &lt;&lt; iArray; </span><span style="font-size: 12pt;">will display the contents (<i style="">i.e.</i>, 1 2 3 4 5) of<span style="">&nbsp; </span></span><span style="font-size: 10pt; font-family: &quot;Courier New&quot;;">iArray</span><span style="font-size: 12pt;">.<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin: 0in 0in 6pt; text-indent: 0in;"><span style="font-size: 12pt; font-family: monospace;"><span style="">(b) &nbsp;<span style="font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;"></span></span></span><span style="font-size: 12pt;">[<b style=""> T<span style="">&nbsp;&nbsp; </span>F </b>]<span style="">&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span style="font-size: 10pt; font-family: &quot;Courier New&quot;;">cout &lt;&lt; cArray1; </span><span style="font-size: 12pt;">is perfectly OK and will always display only</span><span style="font-size: 10pt; font-family: &quot;Courier New&quot;;"> abc</span><span style="font-size: 12pt;">.<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin: 0in 0in 6pt; text-indent: 0in;"><span style="font-size: 12pt; font-family: monospace;"><span style="">(c) &nbsp;<span style="font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;"></span></span></span><span style="font-size: 12pt;">[<b style=""> T<span style="">&nbsp;&nbsp; </span>F </b>]<span style="">&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span style="font-size: 10pt; font-family: &quot;Courier New&quot;;">cout &lt;&lt; cArray2; </span><span style="font-size: 12pt;">is perfectly OK and will always display only</span><span style="font-size: 10pt; font-family: &quot;Courier New&quot;;"> abc</span><span style="font-size: 12pt;">.<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin: 0in 0in 6pt; text-indent: 0in;"><span style="font-size: 12pt; font-family: monospace;"><span style="">(d) &nbsp;<span style="font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;"></span></span></span><span style="font-size: 12pt;">[<b style=""> T<span style="">&nbsp;&nbsp; </span>F </b>]<span style="">&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span style="font-size: 10pt; font-family: &quot;Courier New&quot;;">iArray = iPtr1; </span><span style="font-size: 12pt;">will result in error.<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin: 0in 0in 6pt; text-indent: 0in;"><span style="font-size: 12pt; font-family: monospace;"><span style="">(e) &nbsp;<span style="font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;"></span></span></span><span style="font-size: 12pt;">[<b style=""> T<span style="">&nbsp;&nbsp; </span>F </b>]<span style="">&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span style="font-size: 10pt; font-family: &quot;Courier New&quot;;">iPtr2 = iPtr1; </span><span style="font-size: 12pt;">will result in error.<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin: 0in 0in 6pt; text-indent: 0in;"><span style="font-size: 12pt; font-family: monospace;"><span style="">(f) &nbsp;<span style="font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;"></span></span></span><span style="font-size: 12pt;">[<b style=""> T<span style="">&nbsp;&nbsp; </span>F </b>]<span style="">&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span style="font-size: 10pt; font-family: &quot;Courier New&quot;;">cArray1 </span><span style="font-size: 12pt;">is a C-string.<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin: 0in 0in 6pt; text-indent: 0in;"><span style="font-size: 12pt; font-family: monospace;"><span style="">(g) &nbsp;<span style="font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;"></span></span></span><span style="font-size: 12pt;">[<b style=""> T<span style="">&nbsp;&nbsp; </span>F </b>]<span style="">&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span style="font-size: 10pt; font-family: &quot;Courier New&quot;;">cArray2 </span><span style="font-size: 12pt;">is a C-string.<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin: 0in 0in 6pt; text-indent: 0in;"><span style="font-size: 12pt; font-family: monospace;"><span style="">(h) &nbsp;<span style="font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;"></span></span></span><span style="font-size: 12pt;">[<b style=""> T<span style="">&nbsp;&nbsp; </span>F </b>]<span style="">&nbsp;&nbsp;&nbsp;&nbsp; </span>Same
+amount of memory is allocated when </span><span style="font-size: 10pt; font-family: &quot;Courier New&quot;;">cArray1</span><span style="font-size: 12pt;"> and </span><span style="font-size: 10pt; font-family: &quot;Courier New&quot;;">cArray2</span><span style="font-size: 12pt;"> are declared.<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin: 0in 0in 6pt; text-indent: 0in;"><span style="font-size: 12pt; font-family: monospace;"><span style="">(i) &nbsp;<span style="font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;"></span></span></span><span style="font-size: 12pt;">[<b style=""> T<span style="">&nbsp;&nbsp; </span>F </b>]<span style="">&nbsp;&nbsp;&nbsp;&nbsp; </span>It
+is perfectly OK to use</span><span style="font-size: 10pt; font-family: &quot;Courier New&quot;;">
+strlen(cArray1) </span><span style="font-size: 12pt;">in a statement.<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin: 0in 0in 6pt; text-indent: 0in;"><span style="font-size: 12pt; font-family: monospace;"><span style="">(j) &nbsp;<span style="font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;"></span></span></span><span style="font-size: 12pt;">[<b style=""> T<span style="">&nbsp;&nbsp; </span>F </b>]<span style="">&nbsp;&nbsp;&nbsp;&nbsp; </span>It
+is perfectly OK to use</span><span style="font-size: 10pt; font-family: &quot;Courier New&quot;;">
+strlen(cArray2) </span><span style="font-size: 12pt;">in a statement.<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin: 0in 0in 6pt; text-indent: 0in;"><span style="font-size: 12pt; font-family: monospace;"><span style="">(k) &nbsp;<span style="font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;"></span></span></span><span style="font-size: 12pt;">[<b style=""> T<span style="">&nbsp;&nbsp; </span>F </b>]<span style="">&nbsp;&nbsp;&nbsp;&nbsp; </span>It
+is perfectly OK to use</span><span style="font-size: 10pt; font-family: &quot;Courier New&quot;;">
+strcpy(cArray1, cArray2) </span><span style="font-size: 12pt;">in a statement.<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin: 0in 0in 6pt; text-indent: 0in;"><span style="font-size: 12pt; font-family: monospace;"><span style="">(l) &nbsp;<span style="font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;"></span></span></span><span style="font-size: 12pt;">[<b style=""> T<span style="">&nbsp; </span><span style="">&nbsp;</span>F </b>]<span style="">&nbsp;&nbsp;&nbsp;&nbsp; </span>It is perfectly OK to use</span><span style="font-size: 10pt; font-family: &quot;Courier New&quot;;"> strcpy(cArray2, cArray1) </span><span style="font-size: 12pt;">in a statement.<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin: 0in 0in 6pt; text-indent: 0in;"><span style="font-size: 12pt; font-family: monospace;"><span style="">(m) &nbsp;<span style="font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;"></span></span></span><span style="font-size: 12pt;">[<b style=""> T<span style="">&nbsp;&nbsp; </span>F </b>]<span style="">&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span style="font-size: 10pt; font-family: &quot;Courier New&quot;;">delete [] iArray; </span><span style="font-size: 12pt;">will result in error.<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin: 0in 0in 6pt; text-indent: 0in;"><span style="font-size: 12pt; font-family: monospace;"><span style="">(n) &nbsp;<span style="font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;"></span></span></span><span style="font-size: 12pt;">[<b style=""> T<span style="">&nbsp;&nbsp; </span>F </b>]<span style="">&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span style="font-size: 10pt; font-family: &quot;Courier New&quot;;">delete iPtr1; </span><span style="font-size: 12pt;">will result in error.<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin: 0in 0in 6pt; text-indent: 0in;"><span style="font-size: 12pt; font-family: monospace;"><span style="">(o) &nbsp;<span style="font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;"></span></span></span><span style="font-size: 12pt;">[<b style=""> T<span style="">&nbsp;&nbsp; </span>F </b>]<span style="">&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span style="font-size: 10pt; font-family: &quot;Courier New&quot;;">delete iPtr2; </span><span style="font-size: 12pt;">will result in error.<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin: 0in 0in 6pt; text-indent: 0in;"><span style="font-size: 12pt; font-family: monospace;"><span style="">(p) &nbsp;<span style="font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;"></span></span></span><span style="font-size: 12pt;">[<b style=""> T<span style="">&nbsp;&nbsp; </span>F </b>]<span style="">&nbsp;&nbsp;&nbsp;&nbsp; </span>The
+use of</span><span style="font-size: 10pt; font-family: &quot;Courier New&quot;;"> cin
+&gt;&gt; cArray2; </span><span style="font-size: 12pt;">is safe and
+recommended.<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin: 0in 0in 6pt; text-indent: 0in;"><span style="font-size: 12pt; font-family: monospace;"><span style="">(q) &nbsp;<span style="font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;"></span></span></span><span style="font-size: 12pt;">[<b style=""> T<span style="">&nbsp;&nbsp; </span>F </b>]<span style="">&nbsp;&nbsp;&nbsp;&nbsp; </span>The
+expression</span><span style="font-size: 10pt; font-family: &quot;Courier New&quot;;"> cArray1
+== cArray2 </span><span style="font-size: 12pt;">may evaluate to <i style="">true</i> or <i style="">false</i>.<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin: 0in 0in 6pt; text-indent: 0in;"><span style="font-size: 12pt; font-family: monospace;"><span style="">(r) &nbsp;<span style="font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;"></span></span></span><span style="font-size: 12pt;">[<b style=""> T<span style="">&nbsp;&nbsp; </span>F </b>]<span style="">&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span style="font-size: 10pt; font-family: &quot;Courier New&quot;;">iPtr1 = iPtr2; </span><span style="font-size: 12pt;">will cause <i style="">memory
+leak</i>.<o:p></o:p></span></p>
+
+<p class="MsoNormal" style="margin: 0in 0in 6pt; text-indent: 0in;"><span style="font-size: 12pt; font-family: monospace;"><span style="">(s) &nbsp;<span style="font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;"></span></span></span><span style="font-size: 12pt;">[<b style=""> T<span style="">&nbsp;&nbsp; </span>F </b>]<span style="">&nbsp;&nbsp;&nbsp;&nbsp; </span></span><span style="font-size: 10pt; font-family: &quot;Courier New&quot;;">iPtr1 = new int; </span><span style="font-size: 12pt;">will cause <i style="">memory
+leak</i>.</span></p><p class="MsoNormal" style="margin: 0in 0in 6pt; text-indent: 0in;"><span style="font-size: 12pt; font-family: monospace;"><span style="">(t) &nbsp;<span style="font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;"></span></span></span><span style="font-size: 12pt;">[<b style=""> T<span style="">&nbsp;&nbsp; </span>F </b>]<span style="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span><span style="font-size: 12pt; font-family: &quot;Times New Roman&quot;,&quot;serif&quot;;"></span><span style="font-size: 10pt; font-family: &quot;Courier New&quot;;">cout
+&lt;&lt; (cArray2 + 1); </span><span style="font-size: 12pt; font-family: &quot;Times New Roman&quot;,&quot;serif&quot;;">is perfectly OK and will always display only</span><span style="font-size: 10pt; font-family: &quot;Courier New&quot;;"> bc</span><span style="font-size: 12pt; font-family: &quot;Times New Roman&quot;,&quot;serif&quot;;">.</span><span style="font-size: 12pt;"><o:p></o:p></span></p>
+
+<span style="font-size: 12pt; font-family: &quot;Times New Roman&quot;,&quot;serif&quot;;"></span><b><tt></tt></b></td>
+</tr>
+</tbody></table><hr width="100%"></body></html>

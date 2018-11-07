@@ -1,0 +1,5 @@
+﻿  Assign07Test.cpp
+  DPQueue.cpp
+\\mac\icloud\texasstate\2018summer\datastructures(cs3358)\ass7\dpqueue.cpp(125): warning C4244: 'argument': conversion from 'double' to 'CS3358_ssII2018_A7::p_queue::size_type', possible loss of data
+  Generating Code...
+  Ass7.vcxproj -> \\Mac\iCloud\TexasState\2018Summer\DataStructures(CS3358)\Ass7\Ass7\Debug\Ass7.exe

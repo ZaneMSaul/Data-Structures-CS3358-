@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html><head>
+<link rel="icon" type="image/png" href="http://www.cs.txstate.edu/%7Elk04/MyFavicon4.png">
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.8 [en] (Windows NT 5.0; U) [Netscape]">
+   <meta name="Author" content="Lee S. Koh"></head>
+
+<body>
+<img src="BannerLine1.gif">
+<hr><b><font size="+2">Recursion Example 5: <tt>FindMinRecur</tt></font></b>
+<center>
+<hr></center>
+Two variations of one way --&nbsp;depth of recursion is <i>O(n)</i>:
+<table border="1" cellspacing="0" cols="2" width="100%">
+<tbody><tr>
+<td>Keep <i>first</i>, hand down the rest, process first wrt the rest:</td>
+
+<td>Keep <i>last</i>, hand down the rest, process last wrt the rest:</td>
+</tr>
+
+<tr>
+<td><b><tt>int FindMinRecur1a(const int a[], int n)</tt></b>
+<br><tt>// n &gt;= 1 assumed</tt>
+<br><b><tt>{</tt></b>
+<br><b><tt>&nbsp;&nbsp; if (n == 1)</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return a[0];</tt></b>
+<br><b><tt>&nbsp;&nbsp; int minArrayMinusFirst =&nbsp;</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FindMinRecur1a(a + 1, n
+- 1);</tt></b>
+<br><b><tt>&nbsp;&nbsp; if (a[0] &lt; minArrayMinusFirst)</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return a[0];</tt></b>
+<br><b><tt>&nbsp;&nbsp; else</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return minArrayMinusFirst;</tt></b>
+<br><b><tt>}</tt></b></td>
+
+<td><b><tt>int FindMinRecur1b(const int a[], int n)</tt></b>
+<br><tt>// n &gt;= 1 assumed</tt>
+<br><b><tt>{</tt></b>
+<br><b><tt>&nbsp;&nbsp; if (n == 1)</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return a[0];</tt></b>
+<br><b><tt>&nbsp;&nbsp; int minArrayMinusLast =&nbsp;</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FindMinRecur1b(a, n - 1);</tt></b>
+<br><b><tt>&nbsp;&nbsp; if (a[n - 1] &lt; minArrayMinusLast)</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return a[n - 1];</tt></b>
+<br><b><tt>&nbsp;&nbsp; else</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return minArrayMinusLast;</tt></b>
+<br><b><tt>}</tt></b></td>
+</tr>
+
+<tr>
+<td>NOTE: Makes use of <i>pointer arithmetic</i>.</td>
+
+<td>NOTE: Does not require <i>pointer arithmetic</i>.</td>
+</tr>
+</tbody></table>
+
+<p>Another way --&nbsp;depth of recursion is <i>O(log<sub>2</sub>n)</i>:
+</p><blockquote><b><tt>int FindMinRecur2(const int a[], int n)</tt></b>
+<br><tt>// n &gt;= 1 assumed</tt>
+<br><b><tt>{</tt></b>
+<br><b><tt>&nbsp;&nbsp; if (n == 1)</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return a[0];</tt></b>
+<br><b><tt>&nbsp;&nbsp; int minLowerHalf = FindMinRecur2(a, n/2);</tt></b>
+<br><b><tt>&nbsp;&nbsp; int minUpperHalf = FindMinRecur2(a + n/2, n - n/2);</tt></b>
+<br><b><tt>&nbsp;&nbsp; if (minLowerHalf &lt; minUpperHalf)</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return minLowerHalf;</tt></b>
+<br><b><tt>&nbsp;&nbsp; else</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return minUpperHalf;</tt></b>
+<br><b><tt>}</tt></b></blockquote>
+Yet another way --&nbsp;<i>indirect recursion</i>, <i>tail-recursive</i>:
+<blockquote><b><tt>int FindMinRecur3(const int a[], int n)</tt></b>
+<br><tt>// n &gt;= 1 assumed</tt>
+<br><b><tt>{</tt></b>
+<br><b><tt>&nbsp;&nbsp; int min = a[0];</tt></b>
+<br><b><tt>&nbsp;&nbsp; FindMinRecur3Aux(a + 1, n - 1, min);</tt></b>
+<br><b><tt>&nbsp;&nbsp; return min;</tt></b>
+<br><b><tt>}</tt></b>
+<p><b><tt>void FindMinRecur3Aux(const int a[], int n, int&amp; min)</tt></b>
+<br><b><tt>{</tt></b>
+<br><b><tt>&nbsp;&nbsp; if (n == 0)</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return;</tt></b>
+<br><b><tt>&nbsp;&nbsp; if (a[0] &lt; min)</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; min = a[0];</tt></b>
+<br><b><tt>&nbsp;&nbsp; FindMinRecur3Aux(a + 1, n - 1, min);</tt></b>
+<br><b><tt>}</tt></b></p></blockquote>
+Just so you know there are <i>still other ways</i>, this is but one of
+them:
+<blockquote><b><tt>int FindMinRecur4(const int a[], int n)</tt></b>
+<br><b><tt>{</tt></b>
+<br><b><tt>&nbsp;&nbsp; static int min = a[0];</tt></b>
+<br><b><tt>&nbsp;&nbsp; if (n == 0)</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return min;</tt></b>
+<br><b><tt>&nbsp;&nbsp; if (a[0] &lt; min)</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; min = a[0];</tt></b>
+<br><b><tt>&nbsp;&nbsp; FindMinRecur4(a+1, n-1);</tt></b>
+<br><b><tt>&nbsp;&nbsp; return min;</tt></b>
+<br><b><tt>}</tt></b></blockquote>
+
+<hr>Use your browser's <b>Back</b> button to go back to previous page.
+(<a href="http://www.cs.txstate.edu/%7Elk04">click here to return to my homepage</a>)
+<br>
+<hr align="left">
+</body></html>

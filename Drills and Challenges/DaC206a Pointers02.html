@@ -1,0 +1,182 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html><head>
+<link rel="icon" type="image/png" href="http://www.cs.txstate.edu/%7Elk04/MyFavicon4.png">
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.8 [en] (Windows NT 5.0; U) [Netscape]">
+   <meta name="Author" content="Lee S. Koh"><!-- saved from url=(0055)http://www.cs.colorado.edu/~main/questions/chap04q.html --></head>
+<body>
+<img src="BannerLine1.gif">
+<br>
+<hr><b><font size="+2">Drill and Challenges on</font></b>
+<table bgcolor="#ffff99">
+<tbody><tr>
+<td><i><font size="+2">Pointers (Part 2)</font></i></td>
+</tr>
+</tbody></table>
+
+<hr>
+<table width="100%">
+<tbody><tr>
+<td valign="top" width="2%"><img src="BulletL1_7x15.gif" height="15" width="7"></td>
+
+<td colspan="6" valign="top" width="98%">For the variables and addresses
+illustrated in the figure below:</td>
+</tr>
+</tbody></table>
+
+<table width="100%">
+<tbody><tr>
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"><img src="BulletL2_5x12.gif" height="12" width="5"></td>
+
+<td colspan="5" valign="top" width="96%">Fill the empty boxes with values/addresses
+as determined by the following statements (assume the "<b><tt>magic value</tt></b>"
+entered is <b><tt>4</tt></b>)&nbsp; (<b><i>Tip</i></b>: You shouldn't have
+to change any of the values/addresses in the non-empty boxes.)</td>
+</tr>
+</tbody></table>
+
+<table width="100%">
+<tbody><tr>
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"><img src="BulletL2_5x12.gif" height="12" width="5"></td>
+
+<td colspan="5" valign="top" width="96%">Use arrows to show which pointers
+point to which blocks of memory (for all pointers that can be determined
+as such, assuming all of the following statements have been executed)</td>
+</tr>
+</tbody></table>
+
+<table width="100%">
+<tbody><tr>
+<td valign="top" width="2%"></td>
+
+<td valign="top" width="2%"><img src="BulletL2_5x12.gif" height="12" width="5"></td>
+
+<td colspan="5" valign="top" width="96%">What would be displayed by the last
+two <b><tt>cout</tt></b> statements?</td>
+</tr>
+</tbody></table>
+
+<table width="100%">
+<tbody><tr>
+<td valign="top" width="2%"></td>
+
+<td colspan="6" valign="top" width="98%"><u>NOTE</u>: Assume all variables
+and relevant header files have been
+<i>appropriately</i> declared (not
+shown).</td>
+</tr>
+</tbody></table>
+
+<center><table border="1" cellpadding="4" cellspacing="0" cols="1" width="95%">
+<tbody><tr>
+<td><b><tt><font size="+1">somePtr1 = &amp;m;</font></tt></b>
+<br><b><tt><font size="+1">somePtr2 = &amp;amount;</font></tt></b>
+<br><b><tt><font size="+1">*somePtr3 = 25;</font></tt></b>
+<br><b><tt><font size="+1">k = *somePtr4;</font></tt></b>
+<br><b><tt><font size="+1">cout &lt;&lt; "Enter the magic value now: ";</font></tt></b>
+<br><b><tt><font size="+1">cin &gt;&gt; *somePtr1;</font></tt></b>
+<br><b><tt><font size="+1">somePtr5 = somePtr3;</font></tt></b>
+<br><b><tt><font size="+1">*somePtr6 = 1987;</font></tt></b>
+<br><b><tt><font size="+1">*somePtr2 = *somePtr4;</font></tt></b>
+<br><b><tt><font size="+1">cout &lt;&lt; *somePtr3 &lt;&lt; endl;</font></tt></b>
+<br><b><tt><font size="+1">cout &lt;&lt; *somePtr3 * *somePtr1 * *somePtr1
+&lt;&lt; endl;</font></tt></b></td>
+</tr>
+</tbody></table></center>
+
+<center><table cols="1" width="95%">
+<tbody><tr>
+<td></td>
+</tr>
+</tbody></table></center>
+
+<center><table style="width: 95%;" border="1" cellspacing="0" cols="1">
+<tbody><tr>
+<td><img src="DaC206a%20Pointers02.gif" height="410" width="527"></td>
+</tr>
+</tbody></table></center><br><table width="100%">
+<tbody><tr>
+<td valign="top" width="2%"><img src="BulletL1_7x15.gif" height="15" width="7"></td>
+
+<td colspan="6" valign="top" width="98%">For each of the following programs,
+indicate which statements (if any) will cause an error during compilation:</td>
+</tr>
+</tbody></table>
+
+<center><center><table style="text-align: left; width: 95%;" border="1" cellspacing="0" cols="1">
+<tbody><tr>
+<td style="text-align: left;"><tt>#include &lt;iostream&gt;</tt>
+<br><tt>#include &lt;cstdlib&gt;</tt>
+<br><tt>using namespace std;</tt>
+<p><tt>void f1(int* xPtr);</tt>
+</p><p><tt>int main()</tt>
+<br><tt>{</tt>
+<br><tt>&nbsp;&nbsp; int x = 12;</tt>
+<br><tt>&nbsp;&nbsp; cout &lt;&lt; "x = " &lt;&lt; x &lt;&lt; endl;</tt>
+<br><tt>&nbsp;&nbsp; f1(&amp;x);</tt>
+<br><tt>&nbsp;&nbsp; cout &lt;&lt; "x = " &lt;&lt; x &lt;&lt; endl;</tt>
+<br><tt>&nbsp;&nbsp; return EXIT_SUCCESS;</tt>
+<br><tt>}</tt>
+</p><p><tt>void f1(int* xPtr)</tt>
+<br><tt>{</tt>
+<br><tt>&nbsp;&nbsp; *xPtr = 34;</tt>
+<br><tt>&nbsp;&nbsp; int y = 123;</tt>
+<br><tt>&nbsp;&nbsp; cout &lt;&lt; "y = " &lt;&lt; y &lt;&lt; endl;</tt>
+<br><tt>&nbsp;&nbsp; xPtr = &amp;y;</tt>
+<br><tt>&nbsp;&nbsp; *xPtr = *xPtr * 2;</tt>
+<br><tt>&nbsp;&nbsp; cout &lt;&lt; "y = " &lt;&lt; y &lt;&lt; endl;</tt>
+<br><tt>}</tt></p></td>
+</tr>
+</tbody></table></center></center><br><center><center><table style="width: 95%;" border="1" cellspacing="0" cols="1">
+<tbody><tr>
+<td style="text-align: left;"><tt>#include &lt;iostream&gt;</tt>
+<br><tt>#include &lt;cstdlib&gt;</tt>
+<br><tt>using namespace std;</tt>
+<p><tt>void f1(const int* xPtr);</tt>
+</p><p><tt>int main()</tt>
+<br><tt>{</tt>
+<br><tt>&nbsp;&nbsp; int x = 12;</tt>
+<br><tt>&nbsp;&nbsp; cout &lt;&lt; "x = " &lt;&lt; x &lt;&lt; endl;</tt>
+<br><tt>&nbsp;&nbsp; f1(&amp;x);</tt>
+<br><tt>&nbsp;&nbsp; cout &lt;&lt; "x = " &lt;&lt; x &lt;&lt; endl;</tt>
+<br><tt>&nbsp;&nbsp; return EXIT_SUCCESS;</tt>
+<br><tt>}</tt>
+</p><p><tt>void f1(const int* xPtr)</tt>
+<br><tt>{</tt>
+<br><tt>&nbsp;&nbsp; *xPtr = 34;</tt>
+<br><tt>&nbsp;&nbsp; int y = 123;</tt>
+<br><tt>&nbsp;&nbsp; cout &lt;&lt; "y = " &lt;&lt; y &lt;&lt; endl;</tt>
+<br><tt>&nbsp;&nbsp; xPtr = &amp;y;</tt>
+<br><tt>&nbsp;&nbsp; *xPtr = *xPtr * 2;</tt>
+<br><tt>&nbsp;&nbsp; cout &lt;&lt; "y = " &lt;&lt; y &lt;&lt; endl;</tt>
+<br><tt>}</tt></p></td>
+</tr>
+</tbody></table></center></center><br><center><center><table style="width: 95%;" border="1" cellspacing="0" cols="1">
+<tbody><tr>
+<td style="text-align: left;"><tt>#include &lt;iostream&gt;</tt>
+<br><tt>#include &lt;cstdlib&gt;</tt>
+<br><tt>using namespace std;</tt>
+<p><tt>void f1(const int* const xPtr);</tt>
+</p><p><tt>int main()</tt>
+<br><tt>{</tt>
+<br><tt>&nbsp;&nbsp; int x = 12;</tt>
+<br><tt>&nbsp;&nbsp; cout &lt;&lt; "x = " &lt;&lt; x &lt;&lt; endl;</tt>
+<br><tt>&nbsp;&nbsp; f1(&amp;x);</tt>
+<br><tt>&nbsp;&nbsp; cout &lt;&lt; "x = " &lt;&lt; x &lt;&lt; endl;</tt>
+<br><tt>&nbsp;&nbsp; return EXIT_SUCCESS;</tt>
+<br><tt>}</tt>
+</p><p><tt>void f1(const int* const xPtr)</tt>
+<br><tt>{</tt>
+<br><tt>&nbsp;&nbsp; *xPtr = 34;</tt>
+<br><tt>&nbsp;&nbsp; int y = 123;</tt>
+<br><tt>&nbsp;&nbsp; cout &lt;&lt; "y = " &lt;&lt; y &lt;&lt; endl;</tt>
+<br><tt>&nbsp;&nbsp; xPtr = &amp;y;</tt>
+<br><tt>&nbsp;&nbsp; *xPtr = *xPtr * 2;</tt>
+<br><tt>&nbsp;&nbsp; cout &lt;&lt; "y = " &lt;&lt; y &lt;&lt; endl;</tt>
+<br><tt>}</tt></p></td>
+</tr>
+</tbody></table></center></center><br><hr></body></html>

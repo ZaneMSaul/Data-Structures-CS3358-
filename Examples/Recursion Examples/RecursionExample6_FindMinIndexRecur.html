@@ -1,0 +1,70 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link rel="icon"
+      type="image/png"
+      href="http://www.cs.txstate.edu/~lk04/MyFavicon4.png">
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.8 [en] (Windows NT 5.0; U) [Netscape]">
+   <meta name="Author" content="Lee S. Koh">
+</head>
+<body>
+<img SRC="BannerLine1.gif" >
+<hr><b><font size=+2>Recursion Example 6: <tt>FindMinIndexRecur</tt></font></b>
+<center>
+<hr></center>
+Returns the <i>index</i> rather than the <i>value</i>:
+<blockquote><b><tt>int FindMinIndexRecur(const int a[], int n)</tt></b>
+<br><tt>// n >= 1 assumed</tt>
+<br><tt>// in case of tie, returns lowest index of tied bunch</tt>
+<br><b><tt>{</tt></b>
+<br><b><tt>&nbsp;&nbsp; if (n == 1)</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return 0;</tt></b>
+<br><b><tt>&nbsp;&nbsp; int minIndexTheRest = FindMinIndexRecur(a + 1,
+n - 1);</tt></b>
+<br><b><tt>&nbsp;&nbsp; if (a[0] &lt;= a[minIndexTheRest + 1])</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return 0;</tt></b>
+<br><b><tt>&nbsp;&nbsp; else</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return 1 + minIndexTheRest;</tt></b>
+<br><b><tt>}</tt></b>
+<p>QUIZ: What if, in case of tie, <i>highest</i> index of tied bunch needs
+to be returned?</blockquote>
+Compare it with the case of returning the <i>value</i> (part of <a href="RecursionExample5_FindMinRecur.html">Recursion
+Example 5</a>):
+<blockquote><b><tt>int FindMinRecur1a(const int a[], int n)</tt></b>
+<br><tt>// n >= 1 assumed</tt>
+<br><b><tt>{</tt></b>
+<br><b><tt>&nbsp;&nbsp; if (n == 1)</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return a[0];</tt></b>
+<br><b><tt>&nbsp;&nbsp; int minArrayMinusFirst =</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; FindMinRecur1a(a + 1, n
+- 1);</tt></b>
+<br><b><tt>&nbsp;&nbsp; if (a[0] &lt; minArrayMinusFirst)</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return a[0];</tt></b>
+<br><b><tt>&nbsp;&nbsp; else</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return minArrayMinusFirst;</tt></b>
+<br><b><tt>}</tt></b></blockquote>
+For completeness, here's the "keep-last-element" (no-need-for-pointer-arithmetic)
+version:
+<blockquote><b><tt>int FindMinIndexRecur1(const int a[], int n)</tt></b>
+<br><tt>// n >= 1 assumed</tt>
+<br><tt>// in case of tie, returns lowest index of tied bunch</tt>
+<br><b><tt>{</tt></b>
+<br><b><tt>&nbsp;&nbsp; if (n == 1)</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return 0;</tt></b>
+<br><b><tt>&nbsp;&nbsp; int minIndexTheRest = FindMinIndexRecur1(a, n -
+1);</tt></b>
+<br><b><tt>&nbsp;&nbsp; if (a[n - 1] &lt; a[minIndexTheRest])</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return n - 1;</tt></b>
+<br><b><tt>&nbsp;&nbsp; else</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return minIndexTheRest;</tt></b>
+<br><b><tt>}</tt></b>
+<p>QUIZ: What if, in case of tie, <i>highest</i> index of tied bunch needs
+to be returned?</blockquote>
+
+<hr>Use your browser's <b>Back</b> button to go back to previous page.
+(<a href="http://www.cs.txstate.edu/~lk04">click here to return to my homepage</a>)
+<br>
+<hr align="left">
+</body>
+</html>

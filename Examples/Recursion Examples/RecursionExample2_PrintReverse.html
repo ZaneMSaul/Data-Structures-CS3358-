@@ -1,0 +1,72 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link rel="icon"
+      type="image/png"
+      href="http://www.cs.txstate.edu/~lk04/MyFavicon4.png">
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.8 [en] (Windows NT 5.0; U) [Netscape]">
+   <meta name="Author" content="Lee S. Koh">
+</head>
+<body>
+<img SRC="BannerLine1.gif" >
+<hr><b><font size=+2>Recursion Example 2: <tt>PrintReverse</tt></font></b>
+<center>
+<hr></center>
+<i>Recursive</i> solution:
+<blockquote><tt>// function to print in reverse contents of given array
+a of size n</tt>
+<br><b><tt>void PrintReverseRecur(const int a[], int n)</tt></b>
+<br><b><tt>{</tt></b>
+<br><tt><b>&nbsp;&nbsp; if (n &lt;= 0)</b> // nothing to do case (includes
+base case)</tt>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return;</tt></b>
+<br><b><tt>&nbsp;&nbsp; else</tt></b>
+<br><b><tt>&nbsp;&nbsp; {</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PrintReverseRecur(a + 1, n -
+1);</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; a[0];</tt></b>
+<br><b><tt>&nbsp;&nbsp; }</tt></b>
+<br><b><tt>}</tt></b>
+<p><u>NOTES</u>:
+<br>- Uses the fact that a <i>stack</i> lets us <i>reverse</i> (as opposed
+to <i>echo</i>, with a <i>queue</i>) a set of items.
+<br>- Uses the <i>runtime stack</i> (through invocation, i.e., function
+calling) in this case.
+<br>- Uses <i>pointer arithmetic</i> to obtain address (<b><tt>a + 1</tt></b>)
+of sub-array not including the first element.
+<br>- Adapting the algorithm for use with a linked list is straight-forward:
+<blockquote><tt>// function to print in reverse contents of given singly-linked
+list</tt>
+<br><b><tt>void PrintReverseRecur(Node *headPtr)</tt></b>
+<br><b><tt>{</tt></b>
+<br><tt><b>&nbsp;&nbsp; if (headPtr == 0)</b> // nothing to do case (includes
+base case)</tt>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return;</tt></b>
+<br><b><tt>&nbsp;&nbsp; else</tt></b>
+<br><b><tt>&nbsp;&nbsp; {</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; PrintReverseRecur(headPtr->link);</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; headPtr->data;</tt></b>
+<br><b><tt>&nbsp;&nbsp; }</tt></b>
+<br><b><tt>}</tt></b></blockquote>
+</blockquote>
+Compare it with <i>iterative</i> solution:
+<blockquote><tt>// function to print in reverse contents of given array
+a of size n</tt>
+<br><b><tt>void PrintReverseIter(int a[], int n)</tt></b>
+<br><b><tt>{</tt></b>
+<br><tt><b>&nbsp;&nbsp; if (n &lt;= 0)</b> // nothing to do case</tt>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return;</tt></b>
+<br><b><tt>&nbsp;&nbsp; for (int i = n - 1; i >= 0; --i)</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; a[i];</tt></b>
+<br><b><tt>}</tt></b>
+<p>NOTE:
+<br>- An array's <i>random access</i> utility is key to the algorithm.
+<br>- Can we adapt the algorithm for use with a linked list?</blockquote>
+
+<hr>Use your browser's <b>Back</b> button to go back to previous page.
+(<a href="http://www.cs.txstate.edu/~lk04">click here to return to my homepage</a>)
+<br>
+<hr align="left">
+</body>
+</html>

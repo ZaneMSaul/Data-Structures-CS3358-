@@ -1,0 +1,126 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link rel="icon"
+      type="image/png"
+      href="http://www.cs.txstate.edu/~lk04/MyFavicon4.png">
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.8 [en] (Windows NT 5.0; U) [Netscape]">
+   <meta name="Author" content="Lee S. Koh">
+</head>
+<body>
+<img SRC="BannerLine1.gif" >
+<br>
+<hr>
+<table COLS=1 WIDTH="100%" >
+<tr>
+<td><b>In-class Example: Function to swap the <i>first</i> target node
+(if it exists) with the node before it (if there is one) on a given linked
+list (for a given target data item value).</b></td>
+</tr>
+</table>
+
+<hr>
+<table COLS=1 WIDTH="100%" >
+<tr>
+<td></td>
+</tr>
+</table>
+
+<table COLS=2 WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"><img SRC="BulletL1_7x15.gif" height=15 width=7></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%">Some useful notes:</td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"></td>
+
+<td VALIGN=TOP WIDTH="2%"><img SRC="BulletL2_5x12.gif" height=12 width=5></td>
+
+<td VALIGN=TOP COLSPAN="5" WIDTH="96%">No swapping if (1) list is empty,
+(2) list has only one node, (3) no target node can be found on the list,
+and (4) first target node is the head node (even if there are other target
+nodes down the list).</td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"></td>
+
+<td VALIGN=TOP WIDTH="2%"><img SRC="BulletL2_5x12.gif" height=12 width=5></td>
+
+<td VALIGN=TOP COLSPAN="5" WIDTH="96%">Conceptual picture of representative
+cases (<b><font face="Arial,Helvetica">cur</font></b> points to target
+node):
+<p><img SRC="LinkedListMoreAdvancedEg02_Swap1stTargetNodeWithNodeB4.gif" height=495 width=710></td>
+</tr>
+</table>
+
+<table COLS=2 WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"><img SRC="BulletL1_7x15.gif" height=15 width=7></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%">Code:</td>
+</tr>
+</table>
+
+<table COLS=2 WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%">
+<table BORDER CELLSPACING=0 COLS=1 WIDTH="100%" >
+<tr>
+<td><tt>bool Swap1stTargetNodeWithNodeB4(Node*&amp; head, int target)</tt>
+<br><tt>{</tt>
+<br><tt>&nbsp;&nbsp; if (head == 0 || head->link == 0 || head->data ==
+target) return false;</tt>
+<br><tt>&nbsp;&nbsp; Node *cur = head->link, *pre = head, *prepre = 0;</tt>
+<br><tt>&nbsp;&nbsp; while (cur != 0 &amp;&amp; cur->data != target)</tt>
+<br><tt>&nbsp;&nbsp; {</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; prepre = pre;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pre = cur;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cur = cur->link;</tt>
+<br><tt>&nbsp;&nbsp; }</tt>
+<br><tt>&nbsp;&nbsp; if (cur == 0) return false;</tt>
+<br><tt>&nbsp;&nbsp; if (cur == head->link)</tt>
+<br><tt>&nbsp;&nbsp; {</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pre->link = cur->link;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cur->link = pre;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; head = cur;</tt>
+<br><tt>&nbsp;&nbsp; }</tt>
+<br><tt>&nbsp;&nbsp; <strike>else if (cur->link == 0)</strike></tt>
+<br><tt>&nbsp;&nbsp; <strike>{</strike></tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strike>pre->link = 0;</strike></tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strike>cur->link = pre;</strike></tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strike>prepre->link = cur;</strike></tt>
+<br><tt>&nbsp;&nbsp; <strike>}</strike></tt>
+<br><tt>&nbsp;&nbsp; else</tt>
+<br><tt>&nbsp;&nbsp; {</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pre->link = cur->link;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cur->link = pre;</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; prepre->link = cur;</tt>
+<br><tt>&nbsp;&nbsp; }</tt>
+<br><tt>&nbsp;&nbsp; return true;</tt>
+<br><tt>}</tt></td>
+</tr>
+
+<tr>
+<td></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+<hr>Use your browser's <b>Back</b> button to go back to previous page.
+(<a href="http://www.cs.txstate.edu/~lk04">click here to return to my homepage</a>)
+<br>
+<hr align="left">
+</body>
+</html>

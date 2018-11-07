@@ -1,0 +1,245 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html><head>
+<link rel="icon" type="image/png" href="http://www.cs.txstate.edu/%7Elk04/MyFavicon4.png">
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.8 [en] (Windows NT 5.0; U) [Netscape]">
+   <meta name="Author" content="Lee S. Koh"></head>
+<body>
+<img src="BannerLine1.gif">
+<hr><b><font size="+2">Tree Example 4: Tree Printing (illustrating Tree Traversal)</font></b>
+<br>
+<hr>
+<table cols="1" width="100%">
+<tbody><tr>
+<td></td>
+</tr>
+</tbody></table>
+
+<table cols="1" width="100%">
+<tbody><tr>
+<td><b><tt>preorder_print</tt></b>:</td>
+</tr>
+</tbody></table>
+
+<table style="width: 100%; height: 32px;">
+<tbody><tr>
+<td style="width: 2%; vertical-align: top;"></td>
+
+<td colspan="6" valign="top" width="98%">
+<table border="1" cellspacing="0" cols="1" width="100%">
+<tbody><tr>
+<td><b><tt>void preorder_print(btNode* root, ostream&amp; out)</tt></b>
+<br><tt>// pre:&nbsp; (none)</tt>
+<br><tt>// post: values (if any) stored on tree rooted at</tt>
+<br><tt>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; root have been inserted
+(each followed by</tt>
+<br><tt>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a space character) in preorder
+fashion</tt>
+<br><tt>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; into out</tt>
+<br><b><tt>{</tt></b>
+<br><tt><b>&nbsp;&nbsp; if (root != 0) </b>// if empty tree, simply return&nbsp;</tt>
+<br><tt>&nbsp;&nbsp; {</tt>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; out &lt;&lt; root-&gt;data &lt;&lt;
+' ';</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; preorder_print(root-&gt;left, out);</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; preorder_print(root-&gt;right, out);</tt></b>
+<br><b><tt>&nbsp;&nbsp; }</tt></b>
+<br><b><tt>}</tt></b></td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+</tbody></table>
+
+<table style="width: 100%; height: 32px;">
+<tbody><tr>
+<td style="width: 2%; vertical-align: top;"></td>
+
+<td colspan="6" valign="top" width="98%">NOTE: The base case (situation:
+empty tree; action: return) is implicit as commented.</td>
+</tr>
+</tbody></table>
+
+<table cols="1" width="100%">
+<tbody><tr>
+<td></td>
+</tr>
+</tbody></table>
+
+<table cols="1" width="100%">
+<tbody><tr>
+<td><b><tt>inorder_print</tt></b>:</td>
+</tr>
+</tbody></table>
+
+<table style="width: 100%; height: 32px;">
+<tbody><tr>
+<td style="width: 2%; vertical-align: top;"></td>
+
+<td colspan="6" valign="top" width="98%">
+<table border="1" cellspacing="0" cols="1" width="100%">
+<tbody><tr>
+<td><b><tt>void inorder_print(btNode* root, ostream&amp; out)</tt></b>
+<br><tt>// pre:&nbsp; (none)</tt>
+<br><tt>// post: values (if any) stored on tree rooted at</tt>
+<br><tt>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; root have been inserted
+(each followed by</tt>
+<br><tt>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a space character) in inorder
+fashion</tt>
+<br><tt>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; into out</tt>
+<br><b><tt>{</tt></b>
+<br><tt><b>&nbsp;&nbsp; if (root != 0) </b>// if empty tree, simply return&nbsp;</tt>
+<br><tt>&nbsp;&nbsp; {</tt>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; inorder_print(root-&gt;left, out);</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; out &lt;&lt; root-&gt;data &lt;&lt;
+' ';</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; inorder_print(root-&gt;right, out);</tt></b>
+<br><b><tt>&nbsp;&nbsp; }</tt></b>
+<br><b><tt>}</tt></b></td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+</tbody></table>
+
+<table style="width: 100%; height: 32px;">
+<tbody><tr>
+<td style="width: 2%; vertical-align: top;"></td>
+
+<td colspan="6" valign="top" width="98%">NOTE: The base case (situation:
+empty tree; action: return) is implicit as commented.</td>
+</tr>
+</tbody></table>
+
+<table cols="1" width="100%">
+<tbody><tr>
+<td></td>
+</tr>
+</tbody></table>
+
+<table cols="1" width="100%">
+<tbody><tr>
+<td><b><tt>postorder_print</tt></b>:</td>
+</tr>
+</tbody></table>
+
+<table style="width: 100%; height: 32px;">
+<tbody><tr>
+<td style="width: 2%; vertical-align: top;"></td>
+
+<td colspan="6" valign="top" width="98%">
+<table border="1" cellspacing="0" cols="1" width="100%">
+<tbody><tr>
+<td><b><tt>void postorder_print(btNode* root, ostream&amp; out)</tt></b>
+<br><tt>// pre:&nbsp; (none)</tt>
+<br><tt>// post: values (if any) stored on tree rooted at</tt>
+<br><tt>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; root have been inserted
+(each followed by</tt>
+<br><tt>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a space character) in postorder
+fashion</tt>
+<br><tt>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; into out</tt>
+<br><b><tt>{</tt></b>
+<br><tt><b>&nbsp;&nbsp; if (root != 0) </b>// if empty tree, simply return&nbsp;</tt>
+<br><tt>&nbsp;&nbsp; {</tt>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; postorder_print(root-&gt;left, out);</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; postorder_print(root-&gt;right,
+out);</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; out &lt;&lt; root-&gt;data &lt;&lt;
+' ';</tt></b>
+<br><b><tt>&nbsp;&nbsp; }</tt></b>
+<br><b><tt>}</tt></b></td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+</tbody></table>
+
+<table style="width: 100%; height: 32px;">
+<tbody><tr>
+<td style="width: 2%; vertical-align: top;"></td>
+
+<td colspan="6" valign="top" width="98%">NOTE: The base case (situation:
+empty tree; action: return) is implicit as commented.</td>
+</tr>
+</tbody></table>
+
+<table cols="1" width="100%">
+<tbody><tr>
+<td></td>
+</tr>
+</tbody></table>
+
+<table cols="1" width="100%">
+<tbody><tr>
+<td><b><tt>backward_inorder_print</tt></b>:</td>
+</tr>
+</tbody></table>
+
+<table style="width: 100%; height: 32px;">
+<tbody><tr>
+<td style="width: 2%; vertical-align: top;"></td>
+
+<td colspan="6" valign="top" width="98%">
+<table border="1" cellspacing="0" cols="1" width="100%">
+<tbody><tr>
+<td><b><tt>void backward_inorder_print(btNode* root, ostream&amp; out,
+int depth)</tt></b>
+<br><tt>// pre:&nbsp; (none)</tt>
+<br><tt>// post: values (if any) stored on tree rooted at</tt>
+<br><tt>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; root have been inserted
+into out to produce an output</tt>
+<br><tt>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; illustrated below:</tt>
+<br><tt>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; tree:&nbsp;&nbsp;&nbsp;&nbsp;
+3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; output:&nbsp;&nbsp;&nbsp;&nbsp;
+5</tt>
+<br><tt>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+/ \&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+3</tt>
+<br><tt>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+2&nbsp;&nbsp;
+5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+4</tt>
+<br><tt>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+/
+\&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+2</tt>
+<br><tt>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1&nbsp;&nbsp;
+4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+0</tt>
+<br><tt>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+\&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1</tt>
+<br><tt>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+0</tt>
+<br><b><tt>{</tt></b>
+<br><tt><b>&nbsp;&nbsp; if (root != 0) </b>// if empty tree, simply return&nbsp;</tt>
+<br><tt>&nbsp;<b>&nbsp; {</b></tt>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; backward_inorder_print(root-&gt;right,
+out, depth + 1);</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out &lt;&lt; setw(4*depth) &lt;&lt;
+"";</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;out &lt;&lt; root-&gt;data &lt;&lt;
+endl;</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; backward_inorder_print(root-&gt;left,
+out, depth + 1);</tt></b>
+<br><b><tt>&nbsp;&nbsp; }</tt></b>
+<br><b><tt>}</tt></b></td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+</tbody></table>
+
+<table style="width: 100%; height: 32px;">
+<tbody><tr>
+<td style="width: 2%; vertical-align: top;"></td>
+
+<td colspan="6" valign="top" width="98%">NOTE: The base case (situation:
+empty tree; action: return) is implicit as commented.</td>
+</tr>
+</tbody></table><hr>Use your browser's <b>Back</b> button to go back to previous page.
+(<a href="http://www.cs.txstate.edu/%7Elk04">click here to return to my homepage</a>)
+<br>
+<hr align="left">
+</body></html>

@@ -1,0 +1,85 @@
+Script started on Thu 12 Jul 2018 04:26:08 PM CDT
+]0;zms24@zeus:~/Ass1[?1034h[zms24@zeus Ass1]$ exit./a1 auto < a1test.in > a1test.out[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cmake[K
+make: `a1' is up to date.
+]0;zms24@zeus:~/Ass1[zms24@zeus Ass1]$ ./ [Ka1
+3 IntSet objects (is1 is2 is3) have been created.
+
+The following choices are available: 
+  a  Add an item to is1, is2 or is3
+  b  Query if 1 of is1, is2 or is3 is subset of is1, is2 or is3
+  c  Query if an item is in is1, is2 or is3
+  d  Display 1 or more of is1, is2 and is3 (to stdout)
+  e  Query if 1 of is1, is2 or is3 is equal to is1, is2 or is3
+  i  Intersect 1 of is1, is2 or is3 with is1, is2 or is3
+  k  Remove an item from is1, is2 or is3
+  m  Query if 1 or more of is1, is2 and is3 is/are empty
+  r  Reset (make empty) 1 or more of is1, is2 and is3
+  s  Subtract 1 of is1, is2 or is3 from is1, is2 or is3
+  u  Union 1 of is1, is2 or is3 with is1, is2 or is3
+  z  Query # of items in 1 or more of is1, is2 and is3
+  q  Quit this test program
+Enter choice: ^[[A^[[A^[[A            ^C
+]0;zms24@zeus:~/Ass1[zms24@zeus Ass1]$ ./a1makeexit./a1 auto < a1test.in > a1test.out
+]0;zms24@zeus:~/Ass1[zms24@zeus Ass1]$ vim a1test.out
+[?1049h[?1h=[2;1H▽[6n[1;1H  [1;1H[1;57r[?12;25h[?12l[?25h[27m[m[H[2J[?25l[57;1HE325: ATTENTION
+Found a swap file by the name ".a1test.out.swp"
+[10Cowned by: zms24   dated: Thu Jul 12 14:31:25 2018
+[9Cfile name: ~zms24/Ass1/a1test.out
+[10Cmodified: no
+[9Cuser name: zms24   host name: zeus.cs.txstate.edu
+[8Cprocess ID: 11960 (still running)
+While opening file "a1test.out"
+[13Cdated: Thu Jul 12 16:26:44 2018
+      NEWER than swap file!
+
+(1) Another program may be editing the same file.  If this is the case,
+    be careful not to end up with two different instances of the same
+    file when making changes.  Quit, or continue with caution.
+(2) An edit session for this file crashed.
+    If this is the case, use ":recover" or "vim -r a1test.out"
+    to recover the changes (see ":help recovery").
+    If you did this already, delete the swap file ".a1test.out.swp"
+    to avoid this message.
+
+Swap file ".a1test.out.swp" already exists!
+[O]pen Read-Only, (E)dit anyway, (R)ecover, (Q)uit, (A)bort:[?12l[?25h[57;1H[K[?25l[57;1H"a1test.out" [noeol] 307L, 10896C[>c[1;1HEnter object_pair # (12 for is1.OP(is2), 32 for is3.OP(is2),...) 31 read.
+is3 is not subset of is1
+Enter choice: s read.
+Enter object_pair # (12 for is1.OP(is2), 32 for is3.OP(is2),...) 23 read.
+is3 has been subtracted from is2
+Enter choice: d read.
+Enter hybrid # (1 for is1, 23 for is2 and is3, 123 for is1, is2 and is3,...) 123 readd[8;1H.
+   is1: 8  1  2  5  0  7  4  -1
+   is2: (empty)
+   is3: 8  1  2  5  0  7  4  -1  9  3
+Enter choice: z read.
+Enter hybrid # (1 for is1, 23 for is2 and is3, 123 for is1, is2 and is3,...) 123 readd[14;1H.
+   is1 has 8 items
+   is2 has 0 items
+   is3 has 10 items
+Enter choice: u read.
+Enter object_pair # (12 for is1.OP(is2), 32 for is3.OP(is2),...) 23 read.
+is2 has been unioned with is3
+Enter choice: d read.
+Enter hybrid # (1 for is1, 23 for is2 and is3, 123 for is1, is2 and is3,...) 123 readd[23;1H.
+   is1: 8  1  2  5  0  7  4  -1
+   is2: 8  1  2  5  0  7  4  -1  9  3
+   is3: 8  1  2  5  0  7  4  -1  9  3
+Enter choice: s read.
+Enter object_pair # (12 for is1.OP(is2), 32 for is3.OP(is2),...) 21 read.
+is1 has been subtracted from is2
+Enter choice: d read.
+Enter hybrid # (1 for is1, 23 for is2 and is3, 123 for is1, is2 and is3,...) 123 readd[32;1H.
+   is1: 8  1  2  5  0  7  4  -1
+   is2: 9  3
+   is3: 8  1  2  5  0  7  4  -1  9  3
+Enter choice: u read.
+Enter object_pair # (12 for is1.OP(is2), 32 for is3.OP(is2),...) 12 read.
+is1 has been unioned with is2[38;30H[K[39;1HEnter choice: d read.[39;22H[K[40;1HEnter hybrid # (1 for is1, 23 for is2 and is3, 123 for is1, is2 and is3,...) 123 readd[41;1H.[41;10H[K[42;4His1: 9  3  8  1  2  5  0  7  4  -1[42;38H[K[43;1H   is2: 9  3[43;13H[K[44;4His3: 8  1  2  5  0  7  4  -1  9  3[44;38H[K[45;1HEnter choice: e read.[45;23H[K[46;1HEnter object_pair # (12 for is1.OP(is2), 32 for is3.OP(is2),...) 12 read.
+is1 is not equal to is2[47;25H[K[48;1HEnter choice: e read.[48;23H[K[49;1HEnter object_pair # (12 for is1.OP(is2), 32 for is3.OP(is2),...) 13 read.
+is1 is equal to is3[50;21H[K[51;1HEnter choice: e read.[51;22H[K[52;1HEnter object_pair # (12 for is1.OP(is2), 32 for is3.OP(is2),...) 23 read.
+is2 is not equal to is3[53;24H[K[54;1HEnter choice: q read.[54;22H[K[55;1HQuit option selected...bye
+Press Enter or Return when ready...[56;37H[K[57;68H307,1[9CBot[56;1H[?12l[?25h[?25l[57;1H[K[57;1H:[?12l[?25hx[?25l[?12l[?25h[?25l[57;1H[K[57;1H[?1l>[?12l[?25h[?1049l]0;zms24@zeus:~/Ass1[zms24@zeus Ass1]$ exit
+exit
+
+Script done on Thu 12 Jul 2018 04:27:13 PM CDT

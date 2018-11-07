@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html><head>
+<link rel="icon" type="image/png" href="http://www.cs.txstate.edu/%7Elk04/MyFavicon4.png">
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.8 [en] (Windows NT 5.0; U) [Netscape]">
+   <meta name="Author" content="Lee S. Koh"></head>
+<body>
+<img src="BannerLine1.gif">
+<hr><b><font size="+2">Tree Example 2: <tt>tree_copy</tt></font></b>
+<br>
+<hr><table cols="1" width="100%">
+<tbody><tr>
+<td><big style="font-style: italic; font-weight: bold;">One way:</big><br></td>
+</tr>
+</tbody></table>
+
+<table style="width: 100%;" cols="1">
+<tbody><tr>
+<td style="text-align: left; vertical-align: top; width: 2%;"></td><td style="width: 98%; text-align: left; vertical-align: top; font-family: Courier New,Courier,monospace;"><b><tt>void tree_copy(btNode*&amp; dst_root, btNode* src_root)<br></tt></b><tt>// pre:&nbsp; destination root pointer (dst_root) does not<br>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; point to anything relevant<br>// post: dst_root has been made the root to a new <br>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; tree that is identical (wrt structure and<br>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; values) to the tree rooted at src_root</tt><b><tt><br>{<br>&nbsp;&nbsp; if (src_root == 0) // base case<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dst_root = 0;<br>&nbsp;&nbsp; else<br>&nbsp;&nbsp; {<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dst_root = new btNode;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dst_root-&gt;data = src_root-&gt;data;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; tree_copy(dst_root-&gt;left, src_root-&gt;left);<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; tree_copy(dst_root-&gt;right, src_root-&gt;right);<br>&nbsp;&nbsp; }<br>}</tt></b></td>
+</tr>
+</tbody></table><table style="width: 100%;" cols="1">
+<tbody><tr>
+<td style="text-align: left; vertical-align: top; width: 2%;"></td><td style="width: 98%; text-align: left; vertical-align: top;">QUIZ: Would the <i>leaf</i> nodes
+of the copy (tree rooted at dst_root) properly <i>null terminated</i>?</td>
+</tr>
+</tbody></table><table cols="1" width="100%">
+<tbody><tr>
+<td></td>
+</tr>
+</tbody></table><table cols="1" width="100%">
+<tbody><tr>
+<td><big style="font-style: italic; font-weight: bold;">Another way:</big><br></td>
+</tr>
+</tbody></table><table style="width: 100%;" cols="1">
+<tbody><tr>
+<td style="text-align: left; vertical-align: top; width: 2%;"></td><td style="width: 98%; text-align: left; vertical-align: top; font-family: Courier New,Courier,monospace;"><b><tt>btNode* tree_copy(btNode* src_root)</tt></b>
+<br><tt>// pre:&nbsp; (none)</tt>
+<br><tt>// post: a root pointer to a new tree that is</tt><tt> identical</tt> <br><tt>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(wrt
+structure and values</tt><tt>) to the tree rooted</tt><span style="font-family: monospace;"></span><br><tt>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;at src_root is returned</tt><tt><br></tt><b><tt>{</tt></b>
+<br><tt><b>&nbsp;&nbsp; if (src_root == 0) </b>// base case</tt>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return 0;</tt></b>
+<br><b><tt>&nbsp;&nbsp; else</tt></b>
+<br><tt>&nbsp;&nbsp; {</tt>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; btNode* ret_root = new btNode;</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></b><b><tt>ret_</tt></b><b><tt>root-&gt;data = src_root-&gt;data;</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt></b><b><tt>ret_</tt></b><b><tt>root-&gt;left = </tt></b><b><tt>tree_copy(</tt></b><b><tt>src_root-&gt;left);</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt></b><b><tt>ret_</tt></b><b><tt>root-&gt;right = </tt></b><b><tt>tree_copy(</tt></b><b><tt>src_root-&gt;right);</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return ret_root;</tt></b>
+<br><b><tt>&nbsp;&nbsp; }</tt></b>
+<br><b><tt>}</tt></b></td>
+</tr>
+</tbody></table><hr>Use your browser's <b>Back</b> button to go back to previous page.
+(<a href="http://www.cs.txstate.edu/%7Elk04">click here to return to my homepage</a>)
+<br>
+<hr align="left">
+</body></html>

@@ -1,0 +1,213 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html><head>
+<link rel="icon" type="image/png" href="http://www.cs.txstate.edu/%7Elk04/MyFavicon4.png">
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.8 [en] (Windows NT 5.0; U) [Netscape]">
+   <meta name="Author" content="Lee S. Koh"></head>
+<body>
+<img src="BannerLine1.gif">
+<hr><b><font size="+2">Tree Example 3: Tree Inspection</font></b>
+<br>
+<hr>
+<table cols="1" width="100%">
+<tbody><tr>
+<td></td>
+</tr>
+</tbody></table>
+
+<table cols="1" width="100%">
+<tbody><tr>
+<td><b><tt>size</tt></b>:</td>
+</tr>
+</tbody></table>
+
+<table style="width: 100%; height: 32px;">
+<tbody><tr>
+<td style="width: 2%; vertical-align: top;"></td>
+
+<td colspan="6" valign="top" width="98%">
+<table border="1" cellspacing="0" cols="1" width="100%">
+<tbody><tr>
+<td><b><tt>int size(btNode* root)</tt></b>
+<br><tt>// pre:&nbsp; (none)</tt>
+<br><tt>// post: number of nodes contained in tree rooted at root</tt>
+<br><tt>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; is returned</tt>
+<br><b><tt>{</tt></b>
+<br><tt><b>&nbsp;&nbsp; if (root == 0) </b>// base case</tt>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return 0;</tt></b>
+<br><b><tt>&nbsp;&nbsp; return 1 + size(root-&gt;left) + size(root-&gt;right);</tt></b>
+<br><b><tt>}</tt></b></td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+</tbody></table>
+
+<table cols="1" width="100%">
+<tbody><tr>
+<td></td>
+</tr>
+</tbody></table>
+
+<table cols="1" width="100%">
+<tbody><tr>
+<td><b><tt>depth</tt></b>:</td>
+</tr>
+</tbody></table>
+
+<table style="width: 100%; height: 32px;">
+<tbody><tr>
+<td style="width: 2%; vertical-align: top;"></td>
+
+<td colspan="6" valign="top" width="98%">
+<table border="1" cellspacing="0" cols="1" width="100%">
+<tbody><tr>
+<td><b><tt>int depth(btNode* root)</tt></b>
+<br><tt>// pre:&nbsp; (none)</tt>
+<br><tt>// post: depth of tree rooted at root is returned</tt>
+<br><b><tt>{</tt></b>
+<br><tt><b>&nbsp;&nbsp; if (root == 0) </b>// base case</tt>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return 0;</tt></b>
+<br><b><tt>&nbsp;&nbsp; int depthLST = depth(root-&gt;left),</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; depthRST = depth(root-&gt;right);</tt></b>
+<br><b><tt>&nbsp;&nbsp; return (depthLST &gt; depthRST) ? 1 + depthLST : 1
++ depthRST;</tt></b>
+<br><b><tt>}</tt></b></td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+</tbody></table>
+
+<table style="width: 100%; height: 32px;">
+<tbody><tr>
+<td style="vertical-align: top; width: 2%;"></td>
+
+<td colspan="6" valign="top" width="98%">NOTE: By the definition used here,
+depth of an <i>empty tree</i> is <b><tt>0</tt></b>.</td>
+</tr>
+</tbody></table>
+
+<table cols="1" width="100%">
+<tbody><tr>
+<td></td>
+</tr>
+</tbody></table><table cols="1" width="100%">
+<tbody><tr>
+<td><b><tt>wtBalanced</tt></b>:</td>
+</tr>
+</tbody></table><table style="width: 100%; height: 32px;">
+<tbody><tr>
+<td style="width: 2%; vertical-align: top;"></td>
+
+<td colspan="6" valign="top" width="98%">
+<table border="1" cellspacing="0" cols="1" width="100%">
+<tbody><tr>
+<td><b><tt>bool&nbsp;</tt></b><b><tt>wtBalanced</tt></b><b><tt>(btNode* root)</tt></b>
+<br><tt>// pre:&nbsp; (none)</tt>
+<br><tt>// post: true is returned if tree rooted at root is</tt>
+<br><tt>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; weight-balanced, otherwiese false
+is returned</tt>
+<br><b><tt>{</tt></b>
+<br><tt><b>&nbsp;&nbsp; if (root == 0) </b>// base case</tt>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return true;</tt></b>
+<br><b><tt>&nbsp;&nbsp; int size_diff = size(root-&gt;left) - size(root-&gt;right);</tt></b>
+<br><b><tt>&nbsp;&nbsp; if (size_diff &lt; -1 || size_diff &gt; 1) return
+false;</tt></b>
+<br><b><tt>&nbsp;&nbsp; return&nbsp;</tt></b><b><tt>wtBalanced</tt></b><b><tt>(root-&gt;left) &amp;&amp;&nbsp;</tt></b><b><tt>wtBalanced</tt></b><b><tt>(root-&gt;right);</tt></b>
+<br><b><tt>}</tt></b></td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+</tbody></table>
+
+<table cols="1" width="100%">
+<tbody><tr>
+<td></td>
+</tr>
+</tbody></table><table cols="1" width="100%">
+<tbody><tr>
+<td><b><tt>full</tt></b>:&nbsp;(per textbook, where tree is considered
+full if every leaf has same depth and every&nbsp;non-leaf has two
+non-empty children)&nbsp; (empty tree is full by definition)</td>
+</tr>
+</tbody></table><table style="width: 100%; height: 32px;">
+<tbody><tr>
+<td style="width: 2%; vertical-align: top;"></td>
+
+<td colspan="6" valign="top" width="98%">
+<table border="1" cellspacing="0" cols="1" width="100%">
+<tbody><tr>
+<td><b><tt>bool full(btNode* root)</tt></b>
+<br><tt>// pre:&nbsp; (none)</tt>
+<br><tt>// post: true is returned if tree rooted at root is</tt>
+<br><tt>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a full tree, otherwiese
+false is returned</tt>
+<br><b><tt>{</tt></b>
+<br><tt><b></b></tt><tt><b>&nbsp;&nbsp; if (root == 0) // empty<br>&nbsp; &nbsp; &nbsp; return true</b></tt><b><tt>;</tt></b>
+<br><tt><b>&nbsp;&nbsp; return&nbsp;<span style="font-family: monospace;">chkFull(root, </span></b></tt><tt><b><span style="font-family: monospace;">0)</span></b></tt><tt><b><span style="font-family: monospace;"> != -1;</span></b></tt>
+<br><b><tt></tt></b><b><tt>}<br>/////////////////////////////////////////////////////////////<br></tt></b><b><tt>int chkFull(btNode* btNodePtr, int&nbsp;</tt></b><tt><b><span style="font-family: monospace;"></span></b></tt><tt><b><span style="font-family: monospace;">depRef</span></b></tt><b><tt>)</tt></b>
+<br><tt>// pre:&nbsp; btNodePtr != 0</tt>
+<br><tt>// </tt><tt>post: </tt><tt>returns -1 if depth discrepancy found</tt>
+<br><tt></tt><b><tt>{</tt></b>
+<br><tt><b>&nbsp;&nbsp; <span style="font-family: monospace;">++depRef;</span></b></tt>
+<br><tt><b>&nbsp;&nbsp; if (</b></tt><b><tt>btNodePtr-&gt;left</tt></b><tt><b> == 0 &amp;&amp; </b></tt><b><tt>btNodePtr-&gt;right</tt></b><tt><b> == 0</b></tt><tt><b>) </b>// leaf</tt>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return depRef;</tt></b>
+<br><b><tt>&nbsp;&nbsp; if (</tt></b><b><tt>btNodePtr</tt></b><b><tt>-&gt;left == 0 &amp;&amp;&nbsp;</tt></b><b><tt>btNodePtr</tt></b><b><tt>-&gt;right != 0</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ||</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></b><b><tt>btNodePtr</tt></b><b><tt>-&gt;left != 0 &amp;&amp;&nbsp;</tt></b><b><tt>btNodePtr</tt></b><b><tt>-&gt;right == 0)</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return -1;</tt></b>
+<br><b><tt>&nbsp;&nbsp; int depRefLeft &nbsp;=&nbsp;</tt></b><b><tt>chkFull</tt></b><b><tt>(</tt></b><b><tt>btNodePtr</tt></b><b><tt>-&gt;</tt></b><b><tt>left, &nbsp;depRef),</tt></b><br><b><tt></tt></b><b><tt>&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;</tt></b><b><tt>depRefRight</tt></b><b><tt> =&nbsp;</tt></b><b><tt>chkFull</tt></b><b><tt>(</tt></b><b><tt>btNodePtr</tt></b><b><tt>-&gt;righ</tt></b><b><tt>t, depRef);</tt></b><b><tt></tt></b><br><b><tt>&nbsp;&nbsp; if ( (</tt></b><b><tt>depRefLeft == </tt></b><b><tt>depRefRight</tt></b><b><tt>) &amp;&amp; (</tt></b><b><tt>depRefLeft != -1</tt></b><b><tt>) </tt></b><b><tt></tt></b>)<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt></b><b><tt>return</tt></b><b><tt> ++depRef;</tt></b><br><b><tt></tt></b><b><tt>&nbsp;&nbsp; return -1;</tt></b>
+<br><b><tt>}</tt></b></td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+</tbody></table><b><tt>full</tt></b>: (per certain others, where tree
+is considered full if every node has either zero or two non-empty
+children) (empty tree is full by definition)
+
+
+
+<table style="width: 100%; height: 32px;">
+<tbody><tr>
+<td style="width: 2%; vertical-align: top;"></td>
+
+<td colspan="6" valign="top" width="98%">
+<table border="1" cellspacing="0" cols="1" width="100%">
+<tbody><tr>
+<td><b><tt>bool full(btNode* root)</tt></b>
+<br><tt>// pre:&nbsp; (none)</tt>
+<br><tt>// post: true is returned if tree rooted at root is</tt>
+<br><tt>//&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; a full tree, otherwiese
+false is returned</tt>
+<br><b><tt>{</tt></b>
+<br><tt><b>&nbsp;&nbsp; if (root == 0) </b>// base case</tt>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return true;</tt></b>
+<br><b><tt>&nbsp;&nbsp; if (root-&gt;left == 0 &amp;&amp; root-&gt;right != 0</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ||</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; root-&gt;left != 0 &amp;&amp;
+root-&gt;right == 0)</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return false;</tt></b>
+<br><b><tt>&nbsp;&nbsp; return full(root-&gt;left) &amp;&amp; full(root-&gt;right);</tt></b>
+<br><b><tt>}</tt></b></td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+</tbody></table>
+
+
+
+<table cols="1" width="100%">
+<tbody><tr>
+<td></td>
+</tr>
+</tbody></table>
+
+<hr>Use your browser's <b>Back</b> button to go back to previous page.
+(<a href="http://www.cs.txstate.edu/%7Elk04">click here to return to my homepage</a>)
+<br>
+<hr align="left">
+</body></html>

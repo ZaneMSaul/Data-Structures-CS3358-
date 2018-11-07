@@ -1,0 +1,97 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link rel="icon"
+      type="image/png"
+      href="http://www.cs.txstate.edu/~lk04/MyFavicon4.png">
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.8 [en] (Windows NT 5.0; U) [Netscape]">
+   <meta name="Author" content="Lee S. Koh">
+</head>
+<body>
+<img SRC="BannerLine1.gif" >
+<br>
+<hr style="COLOR: blue"><font size=+2>Implementing Queue Using 2 Stacks</font>
+<br><font size=+2>(Queue Class and Algorithms in Pseudocode)</font>
+<br>
+<hr style="COLOR: blue">
+<table COLS=1 WIDTH="100%" >
+<tr>
+<td><b><font size=+1>Interface</font></b></td>
+</tr>
+</table>
+
+<hr SIZE=1 WIDTH="100%">
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%"><tt>macro guard</tt>
+<br><tt>make stack available</tt>
+<br><tt>make assert() available</tt>
+<br><tt>class queue:</tt>
+<br><tt>&nbsp;&nbsp; public:</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ...&nbsp; // others (constructors,
+destructer, etc.) as needed</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; void push(item)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; void pop()</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; item front()</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; bool empty()</tt>
+<br><tt>&nbsp;&nbsp; private:</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; stack inStack</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; stack outStack</tt></td>
+</tr>
+</table>
+
+<hr SIZE=1 WIDTH="100%">
+<table COLS=1 WIDTH="100%" >
+<tr>
+<td><b><font size=+1>Algorithms for Implementation</font></b></td>
+</tr>
+</table>
+
+<hr SIZE=1 WIDTH="100%">
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%"><tt>Assumptions:</tt>
+<br><tt>(1) capacity of stack is limited only by system resources&nbsp;</tt>
+<br><tt>(2) interface for key stack operations as shown below:</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; void push(item)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; void pop()</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; item top()</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; bool empty()</tt></td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%"><tt>void push(item):</tt>
+<br><tt>&nbsp;&nbsp; inStack.push(item)</tt>
+<p><tt>void pop():</tt>
+<br><tt>&nbsp;&nbsp; assert( !inStack.empty() || !outStack.empty() )</tt>
+<br><tt>&nbsp;&nbsp; if ( outStack.empty() )</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; while ( !inStack.empty() )</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; outStack.push(
+inStack.top() )</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; inStack.pop()</tt>
+<br><tt>&nbsp;&nbsp; outStack.pop()</tt>
+<p><tt>item front():</tt>
+<br><tt>&nbsp;&nbsp; assert( !inStack.empty() || !outStack.empty() )</tt>
+<br><tt>&nbsp;&nbsp; if ( outStack.empty() )</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; while ( !inStack.empty() )</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; outStack.push(
+inStack.top() )</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; inStack.pop()</tt>
+<br><tt>&nbsp;&nbsp; return outStack.top()</tt>
+<p><tt>bool empty():</tt>
+<br><tt>&nbsp;&nbsp; return outStack.empty() &amp;&amp; inStack.empty()</tt></td>
+</tr>
+</table>
+
+<hr align="left" style="COLOR: blue">
+</body>
+</html>

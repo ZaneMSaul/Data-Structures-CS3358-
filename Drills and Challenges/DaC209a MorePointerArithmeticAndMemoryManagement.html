@@ -1,0 +1,101 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link rel="icon"
+      type="image/png"
+      href="http://www.cs.txstate.edu/~lk04/MyFavicon4.png">
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.8 [en] (Windows NT 5.0; U) [Netscape]">
+   <meta name="Author" content="Lee S. Koh">
+<!-- saved from url=(0055)http://www.cs.colorado.edu/~main/questions/chap04q.html -->
+</head>
+<body>
+<img SRC="BannerLine1.gif" >
+<br>
+<hr><b><font size=+2>Drills and Challenges on</font></b>
+<table BGCOLOR="#FFFF99" >
+<tr>
+<td><i><font size=+2>More Pointer Arithmetic and Memory Management</font></i></td>
+</tr>
+</table>
+
+<hr WIDTH="100%">
+<table COLS=1 WIDTH="100%" >
+<tr>
+<td>Study the C++ program shown below and then answer the questions that
+follow. Assume <i>no memory allocation failure</i>. Assume user enters
+<b><tt>3</tt></b>
+when prompted to enter an integer. (<u>NOTE</u>: This program is meant
+solely for testing purpose &ndash; not to be used as a sample program to pattern
+after.)</td>
+</tr>
+</table>
+
+<center><table BORDER CELLPADDING=4 WIDTH="95%" >
+<tr>
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%"><b><tt>#include &lt;iostream></tt></b>
+<br><b><tt>using namespace std;</tt></b>
+<p><b><tt>int main()</tt></b>
+<br><b><tt>{&nbsp;</tt></b>
+<br><b><tt>&nbsp;&nbsp; int intVal;</tt></b>
+<br><b><tt>&nbsp;&nbsp; int *intPtr1 = &amp;intVal, *intPtr2 = new int,
+*intPtr3 = 0;</tt></b>
+<p><b><tt>&nbsp;&nbsp; cout &lt;&lt; "Enter an integer between 1 and 10:
+";</tt></b>
+<br><b><tt>&nbsp;&nbsp; cin >> *intPtr1;</tt></b>
+<br><b><tt>&nbsp;&nbsp; *intPtr2 = *intPtr1 + *intPtr1;</tt></b>
+<br><b><tt>&nbsp;&nbsp; intPtr1 = intPtr2;</tt></b>
+<br><b><tt>&nbsp;&nbsp; intVal = *intPtr1 - 1;</tt></b>
+<br><b><tt>&nbsp;&nbsp; intPtr2 = new int [intVal];</tt></b>
+<br><b><tt>&nbsp;&nbsp; *intPtr2 = *intPtr1;</tt></b>
+<br><b><tt>&nbsp;&nbsp; intPtr3 = intPtr2 + 1;</tt></b>
+<p><b><tt>&nbsp;&nbsp; for (int index = intVal - 1; index > 0; --index)</tt></b>
+<br><b><tt>&nbsp;&nbsp; {&nbsp;</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *intPtr3 = *intPtr2 - index;</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; intPtr3 = intPtr3 + 1;</tt></b>
+<br><b><tt>&nbsp;&nbsp; }</tt></b>
+<p><b><tt>&nbsp;&nbsp; intPtr3 = intPtr3 - 1;</tt></b>
+<br><b><tt>&nbsp;&nbsp; while (intPtr3 != intPtr2)</tt></b>
+<br><b><tt>&nbsp;&nbsp; {&nbsp;</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; cout &lt;&lt; *intPtr3 &lt;&lt;
+endl;</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; intPtr3 = intPtr3 - 2;</tt></b>
+<br><b><tt>&nbsp;&nbsp; }</tt></b>
+<p><b><tt>&nbsp;&nbsp; return 0;</tt></b>
+<br><b><tt>}</tt></b></td>
+</tr>
+</table></center>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"><img SRC="BulletL1_7x15.gif" height=15 width=7></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%">Draw pictures of memory being used
+immediately after the <b><tt>for</tt></b> loop.&nbsp;
+<br>(<u>NOTE</u>: Where possible, show contents of memory exactly, otherwise
+use some hypothetical values.)</td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"><img SRC="BulletL1_7x15.gif" height=15 width=7></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%">What will the <b><tt>while</tt></b>
+loop display?</td>
+</tr>
+</table>
+
+<table WIDTH="100%" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"><img SRC="BulletL1_7x15.gif" height=15 width=7></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%">Write statements to free up dynamic
+memory and indicate (with arrows) where they should be inserted in the
+given code.</td>
+</tr>
+</table>
+
+<hr WIDTH="100%">
+</body>
+</html>

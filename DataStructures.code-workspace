@@ -1,0 +1,28 @@
+{
+	"folders": [
+		{
+			"path": "Ass4"
+		},
+		{
+			"path": "Project"
+		},
+		{
+			"path": "Ass5"
+		},
+		{
+			"path": "Ass6"
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"__bit_reference": "cpp",
+			"string": "cpp",
+			"__config": "cpp",
+			"__nullptr": "cpp",
+			"__split_buffer": "cpp",
+			"deque": "cpp",
+			"string_view": "cpp",
+			"stack": "cpp"
+		}
+	}
+}

@@ -1,0 +1,151 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link rel="icon"
+      type="image/png"
+      href="http://www.cs.txstate.edu/~lk04/MyFavicon4.png">
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.8 [en] (Windows NT 5.0; U) [Netscape]">
+   <meta name="Author" content="Lee S. Koh">
+</head>
+<body>
+<img SRC="BannerLine1.gif" >
+<hr><b><font size=+2>Recursion Example 1: <tt>CalcSum</tt></font></b>
+<br>
+<hr>
+<table COLS=1 WIDTH="100%" >
+<tr>
+<td></td>
+</tr>
+</table>
+
+<table COLS=1 WIDTH="100%" >
+<tr>
+<td><i>Recursive</i> solution:</td>
+</tr>
+</table>
+
+<table WIDTH="100%" style="width: 988px; height: 32px;" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%">
+<table BORDER CELLSPACING=0 COLS=1 WIDTH="100%" >
+<tr>
+<td><tt>// function to calculate sum from 1 to given value n</tt>
+<br><tt>// assume sum will not exceed range of int (n not too big)</tt>
+<br><b><tt>int CalcSumRecur(int n)</tt></b>
+<br><b><tt>{</tt></b>
+<br><tt><b>&nbsp;&nbsp; if (n &lt; 1)</b> // error case, indicated by 0
+return value</tt>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return 0;</tt></b>
+<br><tt><b>&nbsp;&nbsp; else if (n == 1)</b> // base case</tt>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return 1;</tt></b>
+<br><b><tt>&nbsp;&nbsp; else</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return n + CalcSumRecur(n - 1);</tt></b>
+<br><b><tt>}</tt></b></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+<table WIDTH="100%" style="width: 988px; height: 32px;" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%">NOTE: Uses <i>invocation</i> construct
+(<i>branching</i>, i.e., function calling)</td>
+</tr>
+</table>
+
+<table COLS=1 WIDTH="100%" >
+<tr>
+<td></td>
+</tr>
+</table>
+
+<table COLS=1 WIDTH="100%" >
+<tr>
+<td>Compare it with <i>non-recursive</i> solutions:</td>
+</tr>
+</table>
+
+<table WIDTH="100%" style="width: 988px; height: 32px;" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"><img SRC="BulletL1_7x15.gif" height=15 width=7></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%">Uses <i>iteration</i>/<i>repetition</i>
+construct (<i>looping</i>):</td>
+</tr>
+</table>
+
+<table WIDTH="100%" style="width: 988px; height: 32px;" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%">
+<table BORDER CELLSPACING=0 COLS=1 WIDTH="100%" >
+<tr>
+<td><tt>// function to calculate sum from 1 to given value n</tt>
+<br><tt>// assume sum will not exceed range of int (n not too big)</tt>
+<br><b><tt>int CalcSumIter(int n)</tt></b>
+<br><b><tt>{</tt></b>
+<br><tt><b>&nbsp;&nbsp; if (n &lt; 1)</b> // invalid input, indicated by
+0 return value</tt>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return 0;</tt></b>
+<br><b><tt>&nbsp;&nbsp; int sum = 0;</tt></b>
+<br><b><tt>&nbsp;&nbsp; for (int i = 1; i &lt;= n; ++i)</tt></b>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; sum += i;</tt></b>
+<br><b><tt>&nbsp;&nbsp; return sum;</tt></b>
+<br><b><tt>}</tt></b></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+<table WIDTH="100%" style="width: 988px; height: 32px;" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"><img SRC="BulletL1_7x15.gif" height=15 width=7></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%">Uses <i>formula</i>:</td>
+</tr>
+</table>
+
+<table WIDTH="100%" style="width: 988px; height: 32px;" >
+<tr>
+<td VALIGN=TOP WIDTH="2%"></td>
+
+<td VALIGN=TOP COLSPAN="6" WIDTH="98%">
+<table BORDER CELLSPACING=0 COLS=1 WIDTH="100%" >
+<tr>
+<td><tt>// function to calculate sum from 1 to given value n</tt>
+<br><tt>// assume sum will not exceed range of int (n not too big)</tt>
+<br><b><tt>int CalcSumFormula(int n)</tt></b>
+<br><b><tt>{</tt></b>
+<br><tt><b>&nbsp;&nbsp; if (n &lt; 1)</b> // invalid input, indicated by
+0 return value</tt>
+<br><b><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; return 0;</tt></b>
+<br><b><tt>&nbsp;&nbsp; return n * (n + 1) / 2;</tt></b>
+<br><b><tt>}</tt></b></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+<table COLS=1 WIDTH="100%" >
+<tr>
+<td></td>
+</tr>
+</table>
+NOTE: Different algorithms for solving the same problem, with differing
+efficiencies.
+<br>
+<hr>Use your browser's <b>Back</b> button to go back to previous page.
+(<a href="http://www.cs.txstate.edu/~lk04">click here to return to my homepage</a>)
+<br>
+<hr align="left">
+</body>
+</html>

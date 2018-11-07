@@ -1,0 +1,367 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<link rel="icon"
+      type="image/png"
+      href="http://www.cs.txstate.edu/~lk04/MyFavicon4.png">
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="GENERATOR" content="Mozilla/4.79 [en] (Windows NT 5.0; U) [Netscape]">
+   <meta name="Author" content="Lee S. Koh">
+</head>
+<body>
+<img SRC="BannerLine1.gif" >
+<br>
+<hr style="COLOR: blue">
+<p><b><font size=+1>Prefix, Infix and Postfix Notations</font></b>
+<p>We are familiar with writing an expression like
+<blockquote>
+<pre><b><tt>(2 + 3) * 7</tt></b></pre>
+</blockquote>
+When we do so, we are actually using the <b><i>infix notation</i></b>.
+This is <i>not the only</i> notation that can be used. In using the infix
+notation, we write the <b><i>operator</i></b> that is to operate on the
+operands <i><u>in between</u></i> the <b><i>operands</i></b>. In the example
+above, the expression contains two sub-expressions, namely
+<blockquote>
+<pre><b><font color="#3333FF">operand</font></b> <font color="#CC0000">operator </font><b><font color="#3333FF">operand
+</font><tt>&nbsp;&nbsp; <font color="#3333FF">2&nbsp;</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt></b><tt><font color="#CC0000">+</font><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font color="#3333FF">3</font></b></tt></pre>
+</blockquote>
+and
+<blockquote>
+<pre><b><font color="#3333FF">operand</font></b> <font color="#CC0000">operator </font><b><font color="#3333FF">operand
+</font><tt>&nbsp;<font color="#3333FF">(2+3)</font>&nbsp;&nbsp;&nbsp;&nbsp; </tt></b><tt><font color="#CC0000">*</font><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font color="#3333FF">7</font></b></tt></pre>
+</blockquote>
+Intuitively, instead of writing expressions so that an operator appears
+<b><i>in
+between</i></b> the operands it is to operate on, we can also write them
+so that the operator appears <b><i>before</i></b> or <b><i>after
+</i></b>the
+operands. These two alternative ways correspond to the <b><i>prefix notation</i></b>
+and <b><i>postfix notation</i></b>, respectively.
+<p>For the above example, using the prefix notation results in
+<blockquote>
+<pre><font color="#CC0000">operator </font><b><font color="#3333FF">operand operand
+</font><tt>&nbsp;&nbsp; </tt></b><tt><font color="#CC0000">+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font><b><font color="#3333FF">2&nbsp;</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font color="#3333FF">3</font></b></tt></pre>
+</blockquote>
+and
+<blockquote>
+<pre><font color="#CC0000">operator</font> <b><font color="#3333FF">operand operand
+</font><tt>&nbsp;&nbsp; </tt></b><tt><font color="#CC0000">*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font><b><font color="#3333FF">+ 2 3</font>&nbsp;&nbsp;&nbsp;&nbsp; <font color="#3333FF">7</font></b></tt></pre>
+</blockquote>
+On the other hand, using the postfix notation results in
+<blockquote>
+<pre><b><font color="#3333FF">operand operand </font></b><font color="#CC0000">operator
+<tt>&nbsp;&nbsp; </tt></font><b><tt><font color="#3333FF">2&nbsp;</font>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font color="#3333FF">3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></tt></b><tt><font color="#CC0000">+</font></tt></pre>
+</blockquote>
+and
+<blockquote>
+<pre><b><font color="#3333FF">operand operand </font></b><font color="#CC0000">operator
+</font><b><tt><font color="#3333FF">&nbsp;2 3 +</font>&nbsp;&nbsp;&nbsp;&nbsp; <font color="#3333FF">7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></tt></b><tt><font color="#CC0000">*</font></tt></pre>
+</blockquote>
+Notice that I have conveniently <i>dropped the parentheses </i>for the
+expressions written in the prefix and postfix notations. This is because
+they are <i>not needed</i>, which is an advantage that the two alternative
+notations have over the usual infix notation. Another advantage that is
+enjoyed by the <i>postfix</i> notation is that expressions written using
+the notation are <i>particularly easy to evaluate</i>. Some computers internally
+use postfix notation because of this ease of expression evaluation. Before
+we examine how easy it is to evaluate a postfix expression, here is a more
+complex example of an expression written in the three notations:
+<blockquote>
+<pre><b><tt>( 7 + ( 3 * 5 ) ) - 4&nbsp;&nbsp;&nbsp;&nbsp; </tt></b>(infix)
+<b><tt>7&nbsp; 3&nbsp; 5&nbsp; *&nbsp; +&nbsp; 4&nbsp; -&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt></b>(postfix)
+<b><tt>-&nbsp; +&nbsp; 7&nbsp; *&nbsp; 3&nbsp; 5&nbsp; 4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </tt></b>(prefix)</pre>
+</blockquote>
+<b><font size=+1>Using Stacks to Evaluate Postfix Expressions</font></b>
+<p>The assumptions:
+<ol>
+<li>
+Operands are non-negative numbers.</li>
+
+<li>
+Operands are separated by spaces.</li>
+
+<li>
+All operators are binary operators.</li>
+</ol>
+The key characteristic:
+<blockquote>It uses <i>only one stack</i> (for storing numbers <tt>--></tt>
+numbers stack).
+<br>There's no need for an operators stack because each <i>operator is
+used as soon as it is read.</i></blockquote>
+The algorithm:
+<blockquote><tt>Scan input from left to right</tt>
+<br><tt>&nbsp;&nbsp; if (input is a number)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; push it onto the stack</tt>
+<br><tt>&nbsp;&nbsp; else if (input is an operator)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; obtain 2 numbers from, and pop them
+off, the stack</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; peform the operation (NOTE: <u>2nd
+number</u> obtained <u>must</u></tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+be made the <u>left</u> operand)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; push the result onto the stack</tt>
+<br><tt>&nbsp;&nbsp; else</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; do nothing (simply discard input)</tt>
+<br><tt>The stack now contains the desired result</tt></blockquote>
+E.g.: Use a stack to evaluate <b><tt>5 3 2 * + 4 - 5 +</tt></b>
+<blockquote><tt>(NOTE: In the following, the stack has the <b><i>top to
+the right</i></b>.)</tt>
+<p><tt>Symbol&nbsp;&nbsp; Stack&nbsp;&nbsp; Remarks</tt>
+<br><tt>------&nbsp;&nbsp; -----&nbsp;&nbsp; -------</tt>
+<br><tt>5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5</tt>
+<br><tt>3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5 3</tt>
+<br><tt>2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5 3 2</tt>
+<br><tt>*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 5 6&nbsp;&nbsp;&nbsp;&nbsp;
+3 * 2 = 6</tt>
+<br><tt>+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 11&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+5 + 6 = 11</tt>
+<br><tt>4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 11 4</tt>
+<br><tt>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+11 - 4 = 7</tt>
+<br><tt>5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 7 5</tt>
+<br><tt>+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 12&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+7 + 5 = 12</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Answer: 12</tt></blockquote>
+(Click <a href="315MoreComplexStackApplicationsRef01.pdf">here</a> to print
+the above algorithm and example on one page for quick reference.)
+<p><font size=+1><b>Using Stacks to Translate from Infix to Postfix (Fully
+Parenthesized Case</b>)</font>
+<p>The assumptions:
+<ol>
+<li>
+Operands are either numbers or variables</li>
+
+<li>
+All operators are binary operators</li>
+
+<li>
+Infix expression is fully parenthesized</li>
+</ol>
+The key idea:
+<blockquote>Move each operator to the location of the <b><tt>')'</tt></b>
+corresponding to the operation and then remove all parentheses.
+<p><img SRC="TranslatingInfixToPostfixFP.gif" height=171 width=521></blockquote>
+Some technical details:
+<ol>
+<li>
+Must read infix expression from left to right.</li>
+
+<li>
+Must store operators until they are ready to be moved.</li>
+
+<li>
+Must determine the corresponding <b><tt>')'</tt></b> for each operator.</li>
+</ol>
+Some observations:
+<ol>
+<li>
+Operands in the equivalent postfix expression are in the <i>same order</i>
+as in the given infix expression; this means that the algorithm can simply
+copy the infix expression operands, omitting parentheses and inserting
+operators at the correct locations.</li>
+
+<li>
+An operator is inserted into output each time a <b><tt>')'</tt></b> is
+encountered.</li>
+
+<li>
+Any time an operator is needed, it is always the <i>last one that was seen</i>;
+this means that if the operators are pushed onto a stack, the operator
+that is needed at any time is always at the top of the stack.</li>
+</ol>
+The algorithm: (uses <i>one stack</i> for storing <i>operators and parentheses</i>)
+<blockquote><b><tt>Scan infix expression from left to right</tt></b>
+<br><tt>&nbsp;&nbsp; if (input is a left parenthesis)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; push it onto the stack</tt>
+<br><tt>&nbsp;&nbsp; else if (input is an operand)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; write it to output</tt>
+<br><tt>&nbsp;&nbsp; else if (input is an operator)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; push it onto the stack</tt>
+<br><tt>&nbsp;&nbsp; else // input is a right parenthesis (spaces are simply
+discarded)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; discard input</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (top of the stack contains an
+operator)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; read from the
+stack and write the operator read to output</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pop the operator
+off the stack</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; else // too few operators in the
+infix expression</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; print error message
+and exit</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if (top of the stack contains a
+left parenthesis)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pop the stack</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; else // infix expression doesn't
+have balanced parentheses</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; print error message
+and exit</tt>
+<br><b><tt>Check error status</tt></b>
+<br><tt>&nbsp;&nbsp; if (the stack is empty)</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; all done</tt>
+<br><tt>&nbsp;&nbsp; else // infix expression is not fully parenthesized</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; print error message and exit</tt></blockquote>
+E.g.: Use a stack to translate <b><tt>( ( ( A + 7 ) * ( B / C ) ) - ( 2
+* D ) )</tt></b> to postfix
+<blockquote><tt>(NOTE: In the following, the stack has the <b><i>top to
+the right</i></b>.)</tt>
+<p><tt>Symbol&nbsp;&nbsp; Stack&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Output</tt>
+<br><tt>------&nbsp;&nbsp; -----&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+------</tt>
+<br><tt>(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (</tt>
+<br><tt>(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ( (</tt>
+<br><tt>(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ( ( (</tt>
+<br><tt>A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ( ( (&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+A</tt>
+<br><tt>+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ( ( ( +&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+A</tt>
+<br><tt>7&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ( ( ( +&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+A 7</tt>
+<br><tt>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ( (&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+A 7 +</tt>
+<br><tt>*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ( ( *&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+A 7 +</tt>
+<br><tt>(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ( ( * (&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+A 7 +</tt>
+<br><tt>B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ( ( * (&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+A 7 + B</tt>
+<br><tt>/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ( ( * ( /&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+A 7 + B</tt>
+<br><tt>C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ( ( * ( /&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+A 7 + B C</tt>
+<br><tt>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ( ( *&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+A 7 + B C /</tt>
+<br><tt>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+A 7 + B C / *</tt>
+<br><tt>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ( -&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+A 7 + B C / *</tt>
+<br><tt>(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ( - (&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+A 7 + B C / *</tt>
+<br><tt>2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ( - (&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+A 7 + B C / * 2</tt>
+<br><tt>*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ( - ( *&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+A 7 + B C / * 2</tt>
+<br><tt>D&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ( - ( *&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+A 7 + B C / * 2 D</tt>
+<br><tt>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ( -&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+A 7 + B C / * 2 D *</tt>
+<br><tt>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+A 7 + B C / * 2 D * -</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+(Stack is empty: all done)</tt></blockquote>
+(Click <a href="315MoreComplexStackApplicationsRef02.pdf">here</a> to print
+the above algorithm and example on one page for quick reference.)
+<p><b><font size=+1>Using Stacks to Translate from Infix to Postfix (General
+Case)</font></b>
+<p>The assumptions:
+<ol>
+<li>
+Operands are either numbers or variables.</li>
+
+<li>
+All operators are binary operators.</li>
+</ol>
+No longer assume:
+<blockquote>Infix expression is fully parenthesized</blockquote>
+Key to overcoming "missing" parentheses:
+<blockquote>Use <i>precedence rules</i> to help determine the order of
+operations that are "missing" parentheses.</blockquote>
+C++ rules for evaluating arithmetic expressions that are not fully parenthesized:
+<ol>
+<li>
+Parenthesized operations are evaluated first.</li>
+
+<li>
+Non-parenthesized operations are evaluated next, in the order of operator
+precedence from <i>high to low</i>.</li>
+
+<li>
+Arithmetic operations of equal precedence are evaluated from <i>left to
+right</i>, unless overridden by parentheses.</li>
+</ol>
+The algorithm: (uses <i>one stack</i> for storing
+<i>operators and parentheses</i>)
+<blockquote>
+<pre><tt><b>Scan infix expression from left to right
+</b>&nbsp; if (input is a left parenthesis)
+&nbsp;&nbsp;&nbsp; push it onto the stack
+&nbsp; else if (input is an operand)
+&nbsp;&nbsp;&nbsp; write it to output
+&nbsp; else if (input is an operator)
+&nbsp;&nbsp;&nbsp; do until (stack is empty OR
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; top of stack is a left parenthesis OR
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; top of stack is an operator w/ lower precedence than input)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; read the stack and write the result to output
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pop the stack
+&nbsp;&nbsp;&nbsp; push input onto the stack
+&nbsp; else // input is a right parenthesis (spaces are simply discarded)
+&nbsp;&nbsp;&nbsp; discard input
+&nbsp;&nbsp;&nbsp; do until (stack is empty OR
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; top of stack is a left parenthesis)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; read the stack and write the result to output
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pop the stack
+&nbsp;&nbsp;&nbsp; if (stack is empty) // unbalanced parentheses
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; print error message and exit
+&nbsp;&nbsp;&nbsp; else // top of stack is a left parenthesis
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; pop the stack
+<b>Finish up and check error status
+</b>&nbsp; do until (stack is empty)
+&nbsp;&nbsp;&nbsp; if (top of stack is a left parenthesis) // unbalanced parentheses
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; print error message and exit
+&nbsp;&nbsp;&nbsp; else
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; read the stack and write the result to output
+&nbsp;&nbsp;&nbsp; pop the stack</tt></pre>
+</blockquote>
+E.g.: Use a stack to translate <b><tt>3 * X + ( Y - 12 ) - Z</tt></b> to
+postfix
+<blockquote><tt>(NOTE: In the following, the stack has the <b><i>top to
+the right</i></b>.)</tt>
+<p><tt>Symbol&nbsp;&nbsp; Stack&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Output</tt>
+<br><tt>------&nbsp;&nbsp; -----&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+------</tt>
+<br><tt>3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+3</tt>
+<br><tt>*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+3</tt>
+<br><tt>X&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; *&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+3 X</tt>
+<br><tt>+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; +&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+3 X *</tt>
+<br><tt>(&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; + (&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+3 X *</tt>
+<br><tt>Y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; + (&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+3 X * Y</tt>
+<br><tt>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; + ( -&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+3 X * Y</tt>
+<br><tt>12&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; + ( -&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+3 X * Y 12</tt>
+<br><tt>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; +&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+3 X * Y 12 -</tt>
+<br><tt>-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+3 X * Y 12 - +</tt>
+<br><tt>Z&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+3 X * Y 12 - + Z</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+3 X * Y 12 - + Z -</tt>
+<br><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+(Stack is empty: all done)</tt></blockquote>
+(Click <a href="315MoreComplexStackApplicationsRef03.pdf">here</a> to print
+the above algorithm and example on one page for quick reference.)
+<p><b><font size=+1>Textbook Reading</font></b>
+<blockquote>Section 7.4.</blockquote>
+
+<hr style="COLOR: blue"><a href="http://www.cs.txstate.edu/~lk04">Return
+to my homepage.</a> (Use your browser's <b>Back</b> button to go back to
+previous page.)
+<br>
+<hr align="left" style="COLOR: blue"><script language="JavaScript"> var theDate = ""; theDate = document.lastModified;
+document.write("Last Updated: "); document.write(theDate); document.write();
+</script>
+
+</body>
+</html>
